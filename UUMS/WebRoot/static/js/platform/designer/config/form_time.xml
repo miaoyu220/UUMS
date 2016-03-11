@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-top" labelWidth="auto" offsetLeft="5"/>
+	<item type="label">
+		<item type="input" name="sjgz" label="[时间规则]" value="" inputWidth="380" />
+		<item type="newcolumn" />
+		<item type="select" name="sjlx" label="[时间类型]" value="" inputWidth="120">
+			<option value="" text="" />
+			<option value="business" text="business" />
+		</item>
+		<item type="newcolumn" />
+		<item type="select" name="sjdw" label="[时间单位]" value="days" inputWidth="120">
+			<option value="seconds" text="seconds" />
+			<option value="minutes" text="minutes" />
+			<option value="hours" text="hours" />
+			<option value="days" text="days" />
+			<option value="weeks" text="weeks" />
+			<option value="months" text="months" />
+			<option value="years" text="years" />
+		</item>
+	</item>
+</items>

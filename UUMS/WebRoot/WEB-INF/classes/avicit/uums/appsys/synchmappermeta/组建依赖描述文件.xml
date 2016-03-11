@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+<!-- 组件名称 -->
+	<component restName="">
+	
+		<id>组件ID</id>
+		<version>组件版本</version>
+		<platformVersion>平台版本</platformVersion>
+		<name>组件名称</name>
+		<versionDesc>组件版本描述</versionDesc>
+		<!-- 组件依赖信息 -->
+		<dependencies>
+			<dependency>
+				<id>依赖组件ID</id>
+				<version>依赖组件版本</version>
+			</dependency>
+
+			<dependency>
+				<id></id>
+				<version></version>
+			</dependency>
+		</dependencies>
+		
+	</component>
+	
+	
+</components>

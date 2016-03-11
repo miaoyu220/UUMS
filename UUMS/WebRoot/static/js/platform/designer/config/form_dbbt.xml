@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-right" labelAlign="center" labelWidth="80" inputWidth="600"/>
+	<item type="block">
+		<item type="input" name="value" label="" value="" rows="10"/>
+	</item>
+</items>

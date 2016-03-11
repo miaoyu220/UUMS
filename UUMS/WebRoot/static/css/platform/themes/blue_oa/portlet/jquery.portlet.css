@@ -1,0 +1,73 @@
+.ui-portlet-column {
+	float: left;
+	padding-bottom: 10px;
+}
+
+.ui-portlet-header {
+	padding:.2em 0.4em 0 1.5em;
+	font-family: "宋体";
+	font-size:13px;
+}
+
+.ui-portlet-header .ui-icon {
+	float: right;
+	margin:0 0.1em;
+}
+
+.ui-portlet-item {
+	margin: 0 0.4em 0.4em 0;
+}
+
+.ui-portlet-content {
+	padding: 0 0 0 0;
+	border:1px solid #9cbaef;
+	border-top:0;
+/* 	overflow-y:auto; */
+}
+
+.ui-portlet-header .ui-portlet-header-icon {
+	float: left;
+	margin: 0 0.2em 0 -0.5em;
+}
+
+.ui-sortable-placeholder {
+	border: 1px dotted black;
+	visibility: visible !important;
+	height: 100px !important;
+}
+
+.ui-sortable-placeholder * {
+	visibility: hidden;
+}
+.ui-widget-header span.ui-icon-refresh{
+	background: url(images/tool-sprites.gif) no-repeat 0px -225px;
+	width:15px;
+	height:15px;
+}
+.ui-widget-header span.ui-icon-refresh:hover{
+	background-position:right -225px;
+}
+.ui-widget-header span.ui-portlet-toggle{
+	background: url(images/tool-sprites.gif) no-repeat 0px -60px;
+	width:15px;
+	height:15px;
+}
+.ui-widget-header span.ui-portlet-toggle:hover{
+	background-position:right -60px;
+}
+.ui-widget-header span.ui-icon-plusthick{
+	background: url(images/tool-sprites.gif) no-repeat 0px -75px;
+	width:15px;
+	height:15px;
+}
+.ui-widget-header span.ui-icon-plusthick:hover{
+	background-position:right -75px;
+}
+.ui-widget-header span.ui-portlet-close{
+	background: url(images/tool-sprites.gif) no-repeat 0px 0px;
+	width:15px;
+	height:15px;
+}
+.ui-widget-header span.ui-portlet-close:hover{
+	background-position:right 0px;
+}

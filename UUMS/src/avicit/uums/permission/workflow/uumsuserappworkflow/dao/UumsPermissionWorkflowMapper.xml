@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.permission.workflow.uumsuserappworkflow.dao.UumsPermissionWorkflowDao">
+
+<resultMap id="UumsPermissionWorkflowDTOMap" type="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsPermissionWorkflowDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="wfId" column="WF_ID" jdbcType="VARCHAR" />
+		<result property="upId" column="UP_ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 分页查询 UUMS_USER_APP_WORKFLOW -->
+<select id="searchUumsPermissionWorkflowByPage" parameterType="java.util.Map" resultMap="UumsPermissionWorkflowDTOMap">
+	select
+		t1.id                            ,
+		t1.wf_id                         ,
+		t1.up_id                         ,
+	from uums_permission_workflow 	t1 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="wfId != null and wfId != ''">
+				and t1.WF_ID like '%'||#{wfId}||'%'
+			</if>
+			<if test="upId != null and upId != ''">
+				and t1.UP_ID like '%'||#{upId}||'%'
+			</if>
+		</where>
+			order by t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_USER_APP_WORKFLOW -->
+<select id="searchUumsPermissionWorkflow" parameterType="java.util.Map" resultMap="UumsPermissionWorkflowDTOMap">
+	select
+		t1.id                            ,
+		t1.wf_id                         ,
+		t1.up_id                         ,
+	from uums_permission_workflow 	t1 
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="wfId != null and wfId != ''">
+				and t1.WF_ID =#{wfId}
+			</if>
+			<if test="upId != null and upId != ''">
+				and t1.UP_ID =#{upId}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_USER_APP_WORKFLOW -->
+<select id="findUumsPermissionWorkflowById" parameterType="java.util.Map" resultMap="UumsPermissionWorkflowDTOMap">
+	select
+		t1.id                            ,
+		t1.wf_id                         ,
+		t1.up_id                         
+	from uums_permission_workflow 	t1 
+		where t1.id = #{id}
+</select>
+<!-- 根据wf_id查询对象 UUMS_USER_APP_WORKFLOW -->
+<select id="searchUumsPermissionWorkflowByWorkflowId" parameterType="java.util.Map" resultMap="UumsPermissionWorkflowDTOMap">
+	select
+		t1.id                            ,
+		t1.wf_id                         ,
+		t1.up_id                         
+	from uums_permission_workflow 	t1 
+		where t1.wf_id = #{workflowId}
+</select>
+<!-- 新增对象 UUMS_PERMISSION_WORKFLOW -->
+<insert id="insertUumsPermissionWorkflow" parameterType="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsPermissionWorkflowDTO">
+	insert into uums_permission_workflow
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="wfId != null">
+				wf_id,
+			</if>
+			<if test="upId != null">
+				up_id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="wfId != null">
+				#{wfId,jdbcType=VARCHAR},
+			</if>
+			<if test="upId != null">
+				#{upId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_PERMISSION_WORKFLOW -->
+<update id="updateUumsPermissionWorkflowAll" parameterType="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsPermissionWorkflowDTO">
+	update uums_permission_workflow t1
+		set
+			t1.id                             =#{dto.id,jdbcType=VARCHAR},
+			t1.wf_id                          =#{dto.wfId,jdbcType=VARCHAR},
+			t1.up_id                          =#{dto.upId,jdbcType=VARCHAR},
+			t1.created_by                     =#{dto.createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{dto.creationDate},
+			t1.last_updated_by                =#{dto.lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{dto.lastUpdateDate},
+			t1.last_update_ip                 =#{dto.lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+			t1.act_flag                       =#{dto.actFlag,jdbcType=VARCHAR},
+	where t1.id = #{dto.id}
+</update>
+<!-- 主键删除  -->
+<delete id="deleteUumsPermissionWorkflowById" parameterType="java.lang.String">
+		delete from uums_permission_workflow t1 where t1.id = #{id}
+</delete>
+</mapper>

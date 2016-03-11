@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 	 	
+ 	<plugins>
+
+      <plugin interceptor="avicit.platform6.core.mybatis.shard.plugin.ShardPlugin">
+                <property name="shardingConfig" value="shard-config.xml"/>
+       </plugin>
+
+       <plugin interceptor="avicit.platform6.core.mybatis.pagehelper.PageHelper">
+		        <property name="dialect" value="oracle"/>
+        		<property name="offsetAsPageNum" value="true"/>
+        		<property name="rowBoundsWithCount" value="true"/>
+         		<property name="pageSizeZero" value="true"/>
+          		<property name="reasonable" value="true"/>
+		</plugin>
+		<plugin interceptor="avicit.platform6.core.mybatis.intercept.MapInterceptor">
+		</plugin>
+  	</plugins>
+</configuration>

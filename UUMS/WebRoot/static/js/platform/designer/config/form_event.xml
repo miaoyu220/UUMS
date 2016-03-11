@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" inputWidth="550" />
+	<item type="block" inputWidth="auto">
+		<item type="input" name="fnName" label="事件名称" value="" required="true" />
+		<item type="input" name="fnEvt" label="事件" value="" required="true" />
+	</item>
+	<item type="block">
+		<item type="container" name="myGrid" label="" inputWidth="630" inputHeight="250" />
+	</item>
+</items>

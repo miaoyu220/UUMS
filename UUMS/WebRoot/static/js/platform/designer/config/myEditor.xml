@@ -1,0 +1,166 @@
+<mxEditor>
+	<ui>
+		<add as="graph" element="graph" />
+		<add as="toolbar" element="toolbar" />
+	</ui>
+	<Array as="templates">
+		<add as="start">
+			<mxCell value="开始" tagName="start" vertex="1" style="image;image=static/js/platform/designer/images/48/start_event_empty.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="end">
+			<mxCell value="结束" tagName="end" vertex="1" style="image;image=static/js/platform/designer/images/48/end_event_terminate.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="task">
+			<mxCell value="task" tagName="task" vertex="1" style="image;image=static/js/platform/designer/images/48/task_human.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="java">
+			<mxCell value="java" tagName="java" vertex="1" style="image;image=static/js/platform/designer/images/48/task_java.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="sql">
+			<mxCell value="sql" tagName="sql" vertex="1" style="image;image=static/js/platform/designer/images/48/task_sql.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="ws">
+			<mxCell value="ws" tagName="ws" vertex="1" style="image;image=static/js/platform/designer/images/48/task_webservice.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="state">
+			<mxCell value="state" tagName="state" vertex="1" style="image;image=static/js/platform/designer/images/48/task_wait.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="fork">
+			<mxCell value="fork" tagName="fork" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_fork.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="join">
+			<mxCell value="join" tagName="join" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_join.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="decision">
+			<mxCell value="exclusive" tagName="decision" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_exclusive.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="sub-process">
+			<mxCell value="Subprocess" tagName="sub-process" vertex="1" style="image;image=static/js/platform/designer/images/48/task_subprocess.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="foreach">
+			<mxCell value="foreach" tagName="foreach" vertex="1" style="image;image=static/js/platform/designer/images/48/gateway_foreach.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="jms">
+			<mxCell value="jms" tagName="jms" vertex="1" style="image;image=static/js/platform/designer/images/48/task_jms.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+		<add as="custom">
+			<mxCell value="custom" tagName="custom" vertex="1" style="image;image=static/js/platform/designer/images/48/task_custom.png;">
+				<mxGeometry as="geometry" width="50" height="50" />
+			</mxCell>
+		</add>
+	</Array>
+	<mxGraph as="graph">
+		<mxStylesheet as="stylesheet">
+			<add as="defaultVertex" extend="defaultVertex">
+				<add as="fillColor" value="#adc5ff" />
+				<add as="gradientColor" value="#7d85df" />
+				<add as="strokeColor" value="#5d65df" />
+				<add as="fontSize" value="12" />
+				<add as="fontColor" value="#1d258f" />
+				<add as="fontFamily" value="Verdana" />
+			</add>
+			<add as="defaultEdge" extend="defaultEdge">
+				<add as="labelBackgroundColor" value="white" />
+				<add as="rounded" value="1" />
+				<add as="edgeStyle" value="elbowEdgeStyle" />
+				<add as="strokeColor" value="#5d65df" />
+				<add as="fontSize" value="11" />
+				<add as="fontColor" value="#1d258f" />
+				<add as="fontFamily" value="Verdana" />
+			</add>
+			<add as="image">
+				<add as="shape" value="image" />
+				<add as="perimeter" value="rectanglePerimeter" />
+				<add as="fontSize" value="12" />
+				<add as="verticalAlign" value="top" />
+				<add as="verticalLabelPosition" value="bottom" />
+				<add as="resizable" value="0" />
+			</add>
+		</mxStylesheet>
+		<mxGraphModel as="model">
+
+		</mxGraphModel>
+	</mxGraph>
+	<mxDefaultToolbar as="toolbar">
+		<add as="connect" mode="connect" icon="static/js/platform/designer/images/48/flow_sequence.png" />
+		<add as="开始节点" template="start" icon="static/js/platform/designer/images/48/start_event_empty.png" />
+		<add as="结束节点" template="end" icon="static/js/platform/designer/images/48/end_event_terminate.png" />
+		<add as="人工节点" template="task" icon="static/js/platform/designer/images/48/task_human.png" />
+		<add as="Java节点" template="java" icon="static/js/platform/designer/images/48/task_java.png" />
+		<add as="SQL节点" template="sql" icon="static/js/platform/designer/images/48/task_sql.png" />
+		<add as="服务节点" template="ws" icon="static/js/platform/designer/images/48/task_webservice.png" />
+		<add as="状态节点" template="state" icon="static/js/platform/designer/images/48/task_wait.png" />
+		<add as="分支节点" template="fork" icon="static/js/platform/designer/images/48/gateway_fork.png" />
+		<add as="合并节点" template="join" icon="static/js/platform/designer/images/48/gateway_join.png" />
+		<add as="条件路由" template="decision" icon="static/js/platform/designer/images/48/gateway_exclusive.png" />
+		<br/>
+		<br/>
+		<hr/>
+		<add as="子流程节点" template="sub-process" icon="static/js/platform/designer/images/48/task_subprocess.png" />
+		<add as="循环节点" template="foreach" icon="static/js/platform/designer/images/48/gateway_foreach.png" />
+		<add as="JMS节点" template="jms" icon="static/js/platform/designer/images/48/task_jms.png" />
+		<add as="扩展节点" template="custom" icon="static/js/platform/designer/images/48/task_custom.png" />
+	</mxDefaultToolbar>
+	<mxDefaultPopupMenu as="popupHandler">
+		<add as="删除" action="delete" icon="static/js/platform/designer/images/delete.gif" if="cell"/>
+		<add as="对齐" icon="static/js/platform/designer/images/grid.gif" if="cell" >
+			<add as="左对齐" action="alignCellsLeft" icon="static/js/platform/designer/images/grid.gif" if="cell"/>
+			<add as="右对齐" action="alignCellsRight" icon="static/js/platform/designer/images/grid.gif" if="cell"/>
+			<separator/>
+			<add as="上对齐" action="alignCellsTop" icon="static/js/platform/designer/images/grid.gif" if="cell"/>
+			<add as="下对齐" action="alignCellsBottom" icon="static/js/platform/designer/images/grid.gif" if="cell"/>
+		</add>
+	</mxDefaultPopupMenu>
+	<Array as="actions">
+		<add as="alignCellsLeft"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("left");
+			}
+		]]></add>
+		<add as="alignCellsRight"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("right");
+			}
+		]]></add>
+		<add as="alignCellsTop"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("top");
+			}
+		]]></add>
+		<add as="alignCellsBottom"><![CDATA[
+			function (editor)
+			{
+				editor.graph.alignCells("bottom");
+			}
+		]]></add>
+	</Array>
+</mxEditor>

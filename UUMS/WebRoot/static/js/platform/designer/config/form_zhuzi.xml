@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" inputWidth="240" />
+	<item type="label">
+		<item type="input" name="out" label="输出参数" value="" required="true" />
+		<item type="newcolumn" />
+		<item type="input" name="in" label="输入参数" value="" required="true" />
+	</item>
+</items>

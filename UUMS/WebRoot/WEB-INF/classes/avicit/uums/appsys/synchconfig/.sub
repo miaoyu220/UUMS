@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=应用系统同步配置
+assembly.version=avicit/uums/appsys/synchconfig
+assembly.type=Web
+assembly.modules=input,zhanshi,controller,ywc,jcc,designer,
+assembly.service=
+assembly.dao=
+assembly.auto=false

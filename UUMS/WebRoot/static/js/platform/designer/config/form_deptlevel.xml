@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" inputWidth="auto" />
+	<item type="label">
+		<item type="select" name="deptlevel" label="部门级别">
+			<option value="1" text="顶级部门" />
+			<option value="2" text="上上级部门" />
+			<option value="3" text="上级部门" />
+			<option value="4" text="当前部门" selected="true"/>
+		</item>
+	</item>
+</items>

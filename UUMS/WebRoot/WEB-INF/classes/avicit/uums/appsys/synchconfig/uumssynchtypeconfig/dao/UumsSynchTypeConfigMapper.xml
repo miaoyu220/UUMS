@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dao.UumsSynchTypeConfigDao">
+
+<resultMap id="UumsSynchTypeConfigDTOMap" type="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchTypeConfigDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="appId" column="APP_ID" jdbcType="VARCHAR" />
+		<result property="dbType" column="DB_TYPE" jdbcType="VARCHAR" />
+		<result property="dbname" column="DB_NAME" jdbcType="VARCHAR" />
+		<result property="driverClass" column="DRIVER_CLASS" jdbcType="VARCHAR" />
+		<result property="connectStr" column="CONNECT_STR" jdbcType="VARCHAR" />
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR" />
+		<result property="password" column="PASSWORD" jdbcType="VARCHAR" />
+		<result property="orgTable" column="ORG_TABLE" jdbcType="VARCHAR" />
+		<result property="userTable" column="USER_TABLE" jdbcType="VARCHAR" />
+		<result property="hostIp" column="HOST_IP" jdbcType="VARCHAR" />
+		<result property="hostPort" column="HOST_PORT" jdbcType="VARCHAR" />
+		<result property="orgObject" column="ORG_OBJECT" jdbcType="VARCHAR" />
+		<result property="orgOu" column="ORG_OU" jdbcType="VARCHAR" />
+		<result property="userObject" column="USER_OBJECT" jdbcType="VARCHAR" />
+		<result property="userOu" column="USER_OU" jdbcType="VARCHAR" />
+		<result property="wsUrl" column="WS_URL" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="synchType" column="SYNCH_TYPE" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 UUMS_SYNCH_TYPE_CONFIG -->
+<select id="searchUumsSynchTypeConfigByPage" parameterType="java.util.Map" resultMap="UumsSynchTypeConfigDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.db_type                        ,
+		t1.db_name                        ,
+		t1.driver_class                   ,
+		t1.connect_str                    ,
+		t1.user_name                      ,
+		t1.password                       ,
+		t1.org_table                      ,
+		t1.user_table                     ,
+		t1.host_ip                        ,
+		t1.host_port                      ,
+		t1.org_object                     ,
+		t1.org_ou                         ,
+		t1.user_object                    ,
+		t1.user_ou                        ,
+		t1.ws_url                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.synch_type                     
+	from uums_synch_type_config 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID like '%'||#{appId}||'%'
+			</if>
+			<if test="dbType != null and dbType != ''">
+				and t1.DB_TYPE like '%'||#{dbType}||'%'
+			</if>
+			<if test="dbname != null and dbname != ''">
+				and t1.DB_NAME like '%'||#{dbname}||'%'
+			</if>
+			<if test="driverClass != null and driverClass != ''">
+				and t1.DRIVER_CLASS like '%'||#{driverClass}||'%'
+			</if>
+			<if test="connectStr != null and connectStr != ''">
+				and t1.CONNECT_STR like '%'||#{connectStr}||'%'
+			</if>
+			<if test="userName != null and userName != ''">
+				and t1.USER_NAME like '%'||#{userName}||'%'
+			</if>
+			<if test="password != null and password != ''">
+				and t1.PASSWORD like '%'||#{password}||'%'
+			</if>
+			<if test="orgTable != null and orgTable != ''">
+				and t1.ORG_TABLE like '%'||#{orgTable}||'%'
+			</if>
+			<if test="userTable != null and userTable != ''">
+				and t1.USER_TABLE like '%'||#{userTable}||'%'
+			</if>
+			<if test="hostIp != null and hostIp != ''">
+				and t1.HOST_IP like '%'||#{hostIp}||'%'
+			</if>
+			<if test="hostPort != null and hostPort != ''">
+				and t1.HOST_PORT like '%'||#{hostPort}||'%'
+			</if>
+			<if test="orgObject != null and orgObject != ''">
+				and t1.ORG_OBJECT like '%'||#{orgObject}||'%'
+			</if>
+			<if test="orgOu != null and orgOu != ''">
+				and t1.ORG_OU like '%'||#{orgOu}||'%'
+			</if>
+			<if test="userObject != null and userObject != ''">
+				and t1.USER_OBJECT like '%'||#{userObject}||'%'
+			</if>
+			<if test="userOu != null and userOu != ''">
+				and t1.USER_OU like '%'||#{userOu}||'%'
+			</if>
+			<if test="wsUrl != null and wsUrl != ''">
+				and t1.WS_URL like '%'||#{wsUrl}||'%'
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY like '%'||#{createdBy}||'%'
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE like '%'||#{creationDate}||'%'
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like '%'||#{lastUpdatedBy}||'%'
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like '%'||#{lastUpdateDate}||'%'
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like '%'||#{lastUpdateIp}||'%'
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION like '%'||#{version}||'%'
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE like '%'||#{synchType}||'%'
+			</if>
+		</where>
+			order by t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_SYNCH_TYPE_CONFIG -->
+<select id="searchUumsSynchTypeConfig" parameterType="java.util.Map" resultMap="UumsSynchTypeConfigDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.db_type                        ,
+		t1.db_name                        ,
+		t1.driver_class                   ,
+		t1.connect_str                    ,
+		t1.user_name                      ,
+		t1.password                       ,
+		t1.org_table                      ,
+		t1.user_table                     ,
+		t1.host_ip                        ,
+		t1.host_port                      ,
+		t1.org_object                     ,
+		t1.org_ou                         ,
+		t1.user_object                    ,
+		t1.user_ou                        ,
+		t1.ws_url                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.synch_type                     
+	from uums_synch_type_config 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID =#{appId}
+			</if>
+			<if test="dbType != null and dbType != ''">
+				and t1.DB_TYPE =#{dbType}
+			</if>
+			<if test="dbname != null and dbname != ''">
+				and t1.DB_NAME =#{dbname}
+			</if>
+			<if test="driverClass != null and driverClass != ''">
+				and t1.DRIVER_CLASS =#{driverClass}
+			</if>
+			<if test="connectStr != null and connectStr != ''">
+				and t1.CONNECT_STR =#{connectStr}
+			</if>
+			<if test="userName != null and userName != ''">
+				and t1.USER_NAME =#{userName}
+			</if>
+			<if test="password != null and password != ''">
+				and t1.PASSWORD =#{password}
+			</if>
+			<if test="orgTable != null and orgTable != ''">
+				and t1.ORG_TABLE =#{orgTable}
+			</if>
+			<if test="userTable != null and userTable != ''">
+				and t1.USER_TABLE =#{userTable}
+			</if>
+			<if test="hostIp != null and hostIp != ''">
+				and t1.HOST_IP =#{hostIp}
+			</if>
+			<if test="hostPort != null and hostPort != ''">
+				and t1.HOST_PORT =#{hostPort}
+			</if>
+			<if test="orgObject != null and orgObject != ''">
+				and t1.ORG_OBJECT =#{orgObject}
+			</if>
+			<if test="orgOu != null and orgOu != ''">
+				and t1.ORG_OU =#{orgOu}
+			</if>
+			<if test="userObject != null and userObject != ''">
+				and t1.USER_OBJECT =#{userObject}
+			</if>
+			<if test="userOu != null and userOu != ''">
+				and t1.USER_OU =#{userOu}
+			</if>
+			<if test="wsUrl != null and wsUrl != ''">
+				and t1.WS_URL =#{wsUrl}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE =#{synchType}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_SYNCH_TYPE_CONFIG -->
+<select id="findUumsSynchTypeConfigById" parameterType="java.util.Map" resultMap="UumsSynchTypeConfigDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.db_type                        ,
+		t1.db_name                        ,
+		t1.driver_class                   ,
+		t1.connect_str                    ,
+		t1.user_name                      ,
+		t1.password                       ,
+		t1.org_table                      ,
+		t1.user_table                     ,
+		t1.host_ip                        ,
+		t1.host_port                      ,
+		t1.org_object                     ,
+		t1.org_ou                         ,
+		t1.user_object                    ,
+		t1.user_ou                        ,
+		t1.ws_url                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.synch_type                     
+	from uums_synch_type_config 	t1
+		where t1.id = #{id}
+</select>
+<!-- 根据应用系统ID查询对象 UUMS_SYNCH_TYPE_CONFIG -->
+<select id="findUumsSynchTypeConfigByAppId" parameterType="java.util.Map" resultMap="UumsSynchTypeConfigDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.db_type                        ,
+		t1.db_name                        ,
+		t1.driver_class                   ,
+		t1.connect_str                    ,
+		t1.user_name                      ,
+		t1.password                       ,
+		t1.org_table                      ,
+		t1.user_table                     ,
+		t1.host_ip                        ,
+		t1.host_port                      ,
+		t1.org_object                     ,
+		t1.org_ou                         ,
+		t1.user_object                    ,
+		t1.user_ou                        ,
+		t1.ws_url                         ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.synch_type                     
+	from uums_synch_type_config 	t1
+		where t1.app_id = #{appId}
+</select>
+<!-- 新增对象 UUMS_SYNCH_TYPE_CONFIG -->
+<insert id="insertUumsSynchTypeConfig" parameterType="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchTypeConfigDTO">
+	insert into uums_synch_type_config
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="dbType != null">
+				db_type,
+			</if>
+			<if test="dbname != null">
+				db_name,
+			</if>
+			<if test="driverClass != null">
+				driver_class,
+			</if>
+			<if test="connectStr != null">
+				connect_str,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="orgTable != null">
+				org_table,
+			</if>
+			<if test="userTable != null">
+				user_table,
+			</if>
+			<if test="hostIp != null">
+				host_ip,
+			</if>
+			<if test="hostPort != null">
+				host_port,
+			</if>
+			<if test="orgObject != null">
+				org_object,
+			</if>
+			<if test="orgOu != null">
+				org_ou,
+			</if>
+			<if test="userObject != null">
+				user_object,
+			</if>
+			<if test="userOu != null">
+				user_ou,
+			</if>
+			<if test="wsUrl != null">
+				ws_url,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="synchType != null">
+				synch_type,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="dbType != null">
+				#{dbType,jdbcType=VARCHAR},
+			</if>
+			<if test="dbname != null">
+				#{dbname,jdbcType=VARCHAR},
+			</if>
+			<if test="driverClass != null">
+				#{driverClass,jdbcType=VARCHAR},
+			</if>
+			<if test="connectStr != null">
+				#{connectStr,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="orgTable != null">
+				#{orgTable,jdbcType=VARCHAR},
+			</if>
+			<if test="userTable != null">
+				#{userTable,jdbcType=VARCHAR},
+			</if>
+			<if test="hostIp != null">
+				#{hostIp,jdbcType=VARCHAR},
+			</if>
+			<if test="hostPort != null">
+				#{hostPort,jdbcType=VARCHAR},
+			</if>
+			<if test="orgObject != null">
+				#{orgObject,jdbcType=VARCHAR},
+			</if>
+			<if test="orgOu != null">
+				#{orgOu,jdbcType=VARCHAR},
+			</if>
+			<if test="userObject != null">
+				#{userObject,jdbcType=VARCHAR},
+			</if>
+			<if test="userOu != null">
+				#{userOu,jdbcType=VARCHAR},
+			</if>
+			<if test="wsUrl != null">
+				#{wsUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="synchType != null">
+				#{synchType,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_SYNCH_TYPE_CONFIG -->
+<update id="updateUumsSynchTypeConfigSensitive" parameterType="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchTypeConfigDTO">
+	update uums_synch_type_config t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="dbType != null">
+				t1.db_type                        =#{dbType,jdbcType=VARCHAR},
+			</if>
+			<if test="dbname != null">
+				t1.db_name                        =#{dbname,jdbcType=VARCHAR},
+			</if>
+			<if test="driverClass != null">
+				t1.driver_class                   =#{driverClass,jdbcType=VARCHAR},
+			</if>
+			<if test="connectStr != null">
+				t1.connect_str                    =#{connectStr,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				t1.user_name                      =#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				t1.password                       =#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="orgTable != null">
+				t1.org_table                      =#{orgTable,jdbcType=VARCHAR},
+			</if>
+			<if test="userTable != null">
+				t1.user_table                     =#{userTable,jdbcType=VARCHAR},
+			</if>
+			<if test="hostIp != null">
+				t1.host_ip                        =#{hostIp,jdbcType=VARCHAR},
+			</if>
+			<if test="hostPort != null">
+				t1.host_port                      =#{hostPort,jdbcType=VARCHAR},
+			</if>
+			<if test="orgObject != null">
+				t1.org_object                     =#{orgObject,jdbcType=VARCHAR},
+			</if>
+			<if test="orgOu != null">
+				t1.org_ou                         =#{orgOu,jdbcType=VARCHAR},
+			</if>
+			<if test="userObject != null">
+				t1.user_object                    =#{userObject,jdbcType=VARCHAR},
+			</if>
+			<if test="userOu != null">
+				t1.user_ou                        =#{userOu,jdbcType=VARCHAR},
+			</if>
+			<if test="wsUrl != null">
+				t1.ws_url                         =#{wsUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+			<if test="synchType != null">
+				t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where t1.id = #{id} and t1.version =#{version}
+</update>
+<!-- 更新对象 UUMS_SYNCH_TYPE_CONFIG -->
+<update id="updateUumsSynchTypeConfigAll" parameterType="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchTypeConfigDTO">
+	update uums_synch_type_config t1
+		set
+			t1.id                             =#{dto.id,jdbcType=VARCHAR},
+			t1.app_id                         =#{dto.appId,jdbcType=VARCHAR},
+			t1.db_type                        =#{dto.dbType,jdbcType=VARCHAR},
+			t1.db_name                        =#{dto.dbname,jdbcType=VARCHAR},
+			t1.driver_class                   =#{dto.driverClass,jdbcType=VARCHAR},
+			t1.connect_str                    =#{dto.connectStr,jdbcType=VARCHAR},
+			t1.user_name                      =#{dto.userName,jdbcType=VARCHAR},
+			t1.password                       =#{dto.password,jdbcType=VARCHAR},
+			t1.org_table                      =#{dto.orgTable,jdbcType=VARCHAR},
+			t1.user_table                     =#{dto.userTable,jdbcType=VARCHAR},
+			t1.host_ip                        =#{dto.hostIp,jdbcType=VARCHAR},
+			t1.host_port                      =#{dto.hostPort,jdbcType=VARCHAR},
+			t1.org_object                     =#{dto.orgObject,jdbcType=VARCHAR},
+			t1.org_ou                         =#{dto.orgOu,jdbcType=VARCHAR},
+			t1.user_object                    =#{dto.userObject,jdbcType=VARCHAR},
+			t1.user_ou                        =#{dto.userOu,jdbcType=VARCHAR},
+			t1.ws_url                         =#{dto.wsUrl,jdbcType=VARCHAR},
+			t1.created_by                     =#{dto.createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{dto.creationDate},
+			t1.last_updated_by                =#{dto.lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{dto.lastUpdateDate},
+			t1.last_update_ip                 =#{dto.lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+			t1.synch_type                     =#{dto.synchType,jdbcType=VARCHAR},
+	where t1.id = #{dto.id} and t1.version =#{version}
+</update>
+<!-- 主键删除 UUMS_SYNCH_TYPE_CONFIG -->
+<delete id="deleteUumsSynchTypeConfigById" parameterType="java.lang.String">
+		delete from uums_synch_type_config t1 where t1.id = #{id}
+</delete>
+</mapper>

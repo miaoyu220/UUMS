@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+    <head>
+        <column type="ch" align="center" width="50">选择</column>
+        <column type="ed" align="left">步骤号</column>
+        <column type="ed" align="left">步骤名</column>
+    </head>
+</rows>

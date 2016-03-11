@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.permission.synch.uumsuserapppermissions.dao.UumsUserAppPermissionsDao">
+
+<resultMap id="UumsUserAppPermissionsDTOMap" type="avicit.uums.permission.synch.uumsuserapppermissions.dto.UumsUserAppPermissionsDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="appId" column="APP_ID" jdbcType="VARCHAR" />
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="appAccount" column="APP_ACCOUNT" jdbcType="VARCHAR" />
+		<result property="appPwd" column="APP_PWD" jdbcType="VARCHAR" />
+		<result property="auditFlag" column="AUDIT_FLAG" jdbcType="VARCHAR" />
+		<result property="synchFlag" column="SYNCH_FLAG" jdbcType="VARCHAR" />
+		<result property="synchTime" column="SYNCH_TIME" jdbcType="TIMESTAMP" />
+		<result property="operFlag" column="OPER_FLAG" jdbcType="VARCHAR" />
+		<result property="synchType" column="SYNCH_TYPE" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="actFlag" column="ACT_FLAG" jdbcType="VARCHAR" />
+		<result property="auditStatus" column="AUDIT_STATUS" jdbcType="VARCHAR" />
+		<result property="unitCode" column="UNIT_CODE" jdbcType="VARCHAR" />
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 UUMS_USER_APP_PERMISSIONS -->
+<select id="searchUumsUserAppPermissionsByPage" parameterType="java.util.Map" resultMap="UumsUserAppPermissionsDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.user_id                        ,
+		t1.app_account                    ,
+		t1.app_pwd                        ,
+		t1.audit_flag                     ,
+		t1.synch_flag                     ,
+		t1.synch_time                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.act_flag                       ,
+		t1.audit_status                   ,
+		t1.unit_code                      ,
+		t1.user_name
+	from uums_user_app_permissions 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID like '%'||#{appId}||'%'
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID like '%'||#{userId}||'%'
+			</if>
+			<if test="appAccount != null and appAccount != ''">
+				and t1.APP_ACCOUNT like '%'||#{appAccount}||'%'
+			</if>
+			<if test="appPwd != null and appPwd != ''">
+				and t1.APP_PWD like '%'||#{appPwd}||'%'
+			</if>
+			<if test="auditFlag != null and auditFlag != ''">
+				and t1.AUDIT_FLAG like '%'||#{auditFlag}||'%'
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG like '%'||#{synchFlag}||'%'
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG like '%'||#{operFlag}||'%'
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE like '%'||#{synchType}||'%'
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY like '%'||#{createdBy}||'%'
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE like '%'||#{creationDate}||'%'
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like '%'||#{lastUpdatedBy}||'%'
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like '%'||#{lastUpdateDate}||'%'
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like '%'||#{lastUpdateIp}||'%'
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION like '%'||#{version}||'%'
+			</if>
+			<if test="actFlag != null and actFlag != ''">
+				and t1.ACT_FLAG like '%'||#{actFlag}||'%'
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				and t1.audit_status like '%'||#{auditStatus}||'%'
+			</if>
+			<if test="userName != null and userName != ''">
+				and t1.user_name like '%'||#{userName}||'%'
+			</if>
+		</where>
+			order by t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_USER_APP_PERMISSIONS -->
+<select id="searchUumsUserAppPermissions" parameterType="java.util.Map" resultMap="UumsUserAppPermissionsDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.user_id                        ,
+		t1.app_account                    ,
+		t1.app_pwd                        ,
+		t1.audit_flag                     ,
+		t1.synch_flag                     ,
+		t1.synch_time                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.act_flag                       ,
+		t1.audit_status                   ,
+		t1.unit_code                      ,
+		t1.user_name                      
+	from uums_user_app_permissions 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID =#{appId}
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID =#{userId}
+			</if>
+			<if test="appAccount != null and appAccount != ''">
+				and t1.APP_ACCOUNT =#{appAccount}
+			</if>
+			<if test="appPwd != null and appPwd != ''">
+				and t1.APP_PWD =#{appPwd}
+			</if>
+			<if test="auditFlag != null and auditFlag != ''">
+				and t1.AUDIT_FLAG =#{auditFlag}
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG =#{synchFlag}
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG =#{operFlag}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE =#{synchType}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="actFlag != null and actFlag != ''">
+				and t1.ACT_FLAG =#{actFlag}
+			</if>
+			<if test="auditStatus != null and auditSatus != ''">
+				and t1.audit_status =#{auditSatus}
+			</if>
+			<if test="unitCode != null and unitCode != ''">
+				and t1.unit_code =#{unitCode}
+			</if>
+			<if test="userName != null and userName != ''">
+				and t1.user_name =#{userName}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_USER_APP_PERMISSIONS -->
+<select id="findUumsUserAppPermissionsById" parameterType="java.util.Map" resultMap="UumsUserAppPermissionsDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.user_id                        ,
+		t1.app_account                    ,
+		t1.app_pwd                        ,
+		t1.audit_flag                     ,
+		t1.synch_flag                     ,
+		t1.synch_time                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.act_flag                       ,
+		t1.audit_status                   ,
+		t1.unit_code                      ,
+		t1.user_name
+	from uums_user_app_permissions 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 UUMS_USER_APP_PERMISSIONS -->
+<insert id="insertUumsUserAppPermissions" parameterType="avicit.uums.permission.synch.uumsuserapppermissions.dto.UumsUserAppPermissionsDTO">
+	insert into uums_user_app_permissions
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="appAccount != null">
+				app_account,
+			</if>
+			<if test="appPwd != null">
+				app_pwd,
+			</if>
+			<if test="auditFlag != null">
+				audit_flag,
+			</if>
+			<if test="synchFlag != null">
+				synch_flag,
+			</if>
+			<if test="synchTime != null">
+				synch_time,
+			</if>
+			<if test="operFlag != null">
+				oper_flag,
+			</if>
+			<if test="synchType != null">
+				synch_type,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="actFlag != null">
+				act_flag,
+			</if>
+			<if test="auditStatus != null">
+				audit_status,
+			</if>
+			<if test="unitCode != null">
+				unit_code,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="appAccount != null">
+				#{appAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="appPwd != null">
+				#{appPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="auditFlag != null">
+				#{auditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchFlag != null">
+				#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchTime != null">
+				#{synchTime},
+			</if>
+			<if test="operFlag != null">
+				#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="actFlag != null">
+				#{actFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="auditStatus != null">
+				#{auditStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="unitCode != null">
+				#{unitCode, jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName, jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_USER_APP_PERMISSIONS -->
+<update id="updateUumsUserAppPermissionsSensitive" parameterType="avicit.uums.permission.synch.uumsuserapppermissions.dto.UumsUserAppPermissionsDTO">
+	update uums_user_app_permissions t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				t1.user_id                        =#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="appAccount != null">
+				t1.app_account                    =#{appAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="appPwd != null">
+				t1.app_pwd                        =#{appPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="auditFlag != null">
+				t1.audit_flag                     =#{auditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchFlag != null">
+				t1.synch_flag                     =#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchTime != null">
+				t1.synch_time                     =#{synchTime},
+			</if>
+			<if test="operFlag != null">
+				t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+			<if test="actFlag != null">
+				t1.act_flag                       =#{actFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="auditStatus != null">
+				t1.audit_status                   =#{auditStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="unitCode != null">
+				t1.unit_code                      =#{unitCode, jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				t1.user_name                      =#{userName, jdbcType=VARCHAR},
+			</if>
+	</set>
+		where t1.id = #{id}
+</update>
+<!-- 更新对象 UUMS_USER_APP_PERMISSIONS -->
+<update id="updateUumsUserAppPermissionsAll" parameterType="avicit.uums.permission.synch.uumsuserapppermissions.dto.UumsUserAppPermissionsDTO">
+	update uums_user_app_permissions t1
+		set
+			t1.id                             =#{id,jdbcType=VARCHAR},
+			t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			t1.user_id                        =#{userId,jdbcType=VARCHAR},
+			t1.app_account                    =#{appAccount,jdbcType=VARCHAR},
+			t1.app_pwd                        =#{appPwd,jdbcType=VARCHAR},
+			t1.audit_flag                     =#{auditFlag,jdbcType=VARCHAR},
+			t1.synch_flag                     =#{synchFlag,jdbcType=VARCHAR},
+			t1.synch_time                     =#{synchTime},
+			t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{creationDate},
+			t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{lastUpdateDate},
+			t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+			t1.act_flag                       =#{actFlag,jdbcType=VARCHAR},
+			t1.audit_status                   =#{auditStatus,jdbcType=VARCHAR},
+			t1.user_name                      =#{userName,jdbcType=VARCHAR}
+	where t1.id = #{id}
+</update>
+<!-- 主键删除 UUMS_USER_APP_PERMISSIONS -->
+<delete id="deleteUumsUserAppPermissionsById" parameterType="java.lang.String">
+		delete from uums_user_app_permissions t1 where t1.id = #{id}
+</delete>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-right" labelAlign="center" labelWidth="80" inputWidth="600"/>
+	<item type="block">
+		<item type="radio" value="expr" name="type" checked="true" label="Expr类型">
+			<item type="input" name="expr" label="" value="" rows="5"/>
+		</item>
+		<item type="radio" value="beanshell" name="type" label="Beanshell类型">
+			<item type="input" name="beanshell" label="" value="" rows="5"/>
+		</item>
+		<item type="radio" value="class" name="type" label="Class类型">
+			<item type="input" name="class" label="" value=""/>
+		</item>
+	</item>
+</items>

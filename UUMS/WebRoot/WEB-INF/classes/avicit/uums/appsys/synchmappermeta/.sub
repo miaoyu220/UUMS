@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=同步映射元数据
+assembly.version=avicit/uums/appsys/synchmappermeta
+assembly.type=Web
+assembly.modules=input,zhanshi,controller,ywc,jcc,designer,
+assembly.service=
+assembly.dao=
+assembly.auto=false

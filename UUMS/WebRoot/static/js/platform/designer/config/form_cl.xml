@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" inputWidth="550" />
+	<item type="block" inputWidth="auto">
+		<item type="input" name="alias" label="函数名称" value="" required="true" />
+		<item type="input" name="name" label="函数" value="" required="true" />
+	</item>
+</items>

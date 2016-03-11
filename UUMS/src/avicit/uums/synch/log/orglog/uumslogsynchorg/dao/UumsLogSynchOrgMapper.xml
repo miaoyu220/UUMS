@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.synch.log.orglog.uumslogsynchorg.dao.UumsLogSynchOrgDao">
+
+<resultMap id="UumsLogSynchOrgDTOMap" type="avicit.uums.synch.log.orglog.uumslogsynchorg.dto.UumsLogSynchOrgDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="appId" column="APP_ID" jdbcType="VARCHAR" />
+		<result property="orgName" column="ORG_NAME" jdbcType="VARCHAR" />
+		<result property="orgCode" column="ORG_CODE" jdbcType="VARCHAR" />
+		<result property="synchTime" column="SYNCH_TIME" jdbcType="TIMESTAMP" />
+		<result property="synchFlag" column="SYNCH_FLAG" jdbcType="VARCHAR" />
+		<result property="operFlag" column="OPER_FLAG" jdbcType="VARCHAR" />
+		<result property="synchType" column="SYNCH_TYPE" jdbcType="VARCHAR" />
+		<result property="faildCause" column="FAILD_CAUSE" jdbcType="VARCHAR" />
+		<result property="operator" column="OPERATOR" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 分页查询 UUMS_LOG_SYNCH_ORG -->
+<select id="searchUumsLogSynchOrgByPage" parameterType="java.util.Map" resultMap="UumsLogSynchOrgDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.org_name                       ,
+		t1.org_code                       ,
+		t1.synch_time                     ,
+		t1.synch_flag                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.faild_cause                    ,
+		t1.operator                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_log_synch_org 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID like '%'||#{appId}||'%'
+			</if>
+			<if test="orgName != null and orgName != ''">
+				and t1.ORG_NAME like '%'||#{orgName}||'%'
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				and t1.ORG_CODE like '%'||#{orgCode}||'%'
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG like '%'||#{synchFlag}||'%'
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG like '%'||#{operFlag}||'%'
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE like '%'||#{synchType}||'%'
+			</if>
+			<if test="faildCause != null and faildCause != ''">
+				and t1.FAILD_CAUSE like '%'||#{faildCause}||'%'
+			</if>
+			<if test="operator != null and operator != ''">
+				and t1.OPERATOR like '%'||#{operator}||'%'
+			</if>
+		</where>
+			order by t1.SYNCH_TIME desc
+</select>
+<!-- 查询列表 UUMS_LOG_SYNCH_ORG -->
+<select id="searchUumsLogSynchOrg" parameterType="java.util.Map" resultMap="UumsLogSynchOrgDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.org_name                       ,
+		t1.org_code                       ,
+		t1.synch_time                     ,
+		t1.synch_flag                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.faild_cause                    ,
+		t1.operator                       
+	from uums_log_synch_org 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID =#{appId}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				and t1.ORG_NAME =#{orgName}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				and t1.ORG_CODE =#{orgCode}
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG =#{synchFlag}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG =#{operFlag}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE =#{synchType}
+			</if>
+			<if test="faildCause != null and faildCause != ''">
+				and t1.FAILD_CAUSE =#{faildCause}
+			</if>
+			<if test="operator != null and operator != ''">
+				and t1.OPERATOR =#{operator}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_LOG_SYNCH_ORG -->
+<select id="findUumsLogSynchOrgById" parameterType="java.util.Map" resultMap="UumsLogSynchOrgDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.org_name                       ,
+		t1.org_code                       ,
+		t1.synch_time                     ,
+		t1.synch_flag                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.faild_cause                    ,
+		t1.operator                       
+	from uums_log_synch_org 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 UUMS_LOG_SYNCH_ORG -->
+<insert id="insertUumsLogSynchOrg" parameterType="avicit.uums.synch.log.orglog.uumslogsynchorg.dto.UumsLogSynchOrgDTO">
+	insert into uums_log_synch_org
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="orgName != null">
+				org_name,
+			</if>
+			<if test="orgCode != null">
+				org_code,
+			</if>
+			<if test="synchTime != null">
+				synch_time,
+			</if>
+			<if test="synchFlag != null">
+				synch_flag,
+			</if>
+			<if test="operFlag != null">
+				oper_flag,
+			</if>
+			<if test="synchType != null">
+				synch_type,
+			</if>
+			<if test="faildCause != null">
+				faild_cause,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				#{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				#{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="synchTime != null">
+				#{synchTime},
+			</if>
+			<if test="synchFlag != null">
+				#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="operFlag != null">
+				#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="faildCause != null">
+				#{faildCause,jdbcType=VARCHAR},
+			</if>
+			<if test="operator != null">
+				#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_LOG_SYNCH_ORG -->
+<update id="updateUumsLogSynchOrgSensitive" parameterType="avicit.uums.synch.log.orglog.uumslogsynchorg.dto.UumsLogSynchOrgDTO">
+	update uums_log_synch_org t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				t1.org_name                       =#{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				t1.org_code                       =#{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="synchTime != null">
+				t1.synch_time                     =#{synchTime,jdbcType=DATE},
+			</if>
+			<if test="synchFlag != null">
+				t1.synch_flag                     =#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="operFlag != null">
+				t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="faildCause != null">
+				t1.faild_cause                    =#{faildCause,jdbcType=VARCHAR},
+			</if>
+			<if test="operator != null">
+				t1.operator                       =#{operator,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where t1.id = #{id} and t1.version =#{version}
+</update>
+<!-- 更新对象 UUMS_LOG_SYNCH_ORG -->
+<update id="updateUumsLogSynchOrgAll" parameterType="avicit.uums.synch.log.orglog.uumslogsynchorg.dto.UumsLogSynchOrgDTO">
+	update uums_log_synch_org t1
+		set
+			t1.id                             =#{dto.id,jdbcType=VARCHAR},
+			t1.app_id                         =#{dto.appId,jdbcType=VARCHAR},
+			t1.org_name                       =#{dto.orgName,jdbcType=VARCHAR},
+			t1.org_code                       =#{dto.orgCode,jdbcType=VARCHAR},
+			t1.synch_time                     =#{dto.synchTime,jdbcType=DATE},
+			t1.synch_flag                     =#{dto.synchFlag,jdbcType=VARCHAR},
+			t1.oper_flag                      =#{dto.operFlag,jdbcType=VARCHAR},
+			t1.synch_type                     =#{dto.synchType,jdbcType=VARCHAR},
+			t1.faild_cause                    =#{dto.faildCause,jdbcType=VARCHAR},
+			t1.operator                       =#{dto.operator,jdbcType=VARCHAR},
+	where t1.id = #{dto.id} and t1.version =#{version}
+</update>
+<!-- 主键删除 UUMS_LOG_SYNCH_ORG -->
+<delete id="deleteUumsLogSynchOrgById" parameterType="java.lang.String">
+		delete from uums_log_synch_org t1 where t1.id = #{id}
+</delete>
+</mapper>

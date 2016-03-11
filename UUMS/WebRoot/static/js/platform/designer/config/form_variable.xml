@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" inputWidth="240" />
+	<item type="label">
+		<item type="input" name="alias" label="变量名称" value="" required="true" />
+		<item type="newcolumn" />
+		<item type="input" name="name" label="变量" value="" required="true" />
+	</item>
+	<item type="label">
+		<item type="input" name="init-expr" label="初始值" value="" />
+		<item type="newcolumn" />
+		<item type="select" name="type" label="变量类型">
+			<option value="string" text="string" />
+			<option value="long" text="long" />
+			<option value="double" text="double" />
+			<option value="date" text="date" />
+			<option value="boolean" text="boolean" />
+			<option value="char" text="char" />
+			<option value="byte" text="byte" />
+			<option value="short" text="short" />
+			<option value="integer" text="integer" />
+			<option value="float" text="float" />
+			<option value="byte[]" text="byte[]" />
+			<option value="char[]" text="char[]" />
+			<option value="serializable" text="serializable" />
+		</item>
+	</item>
+	<item type="label">
+		<item type="input" name="desc" label="描述" value="" rows="3" inputWidth="562" />
+	</item>
+</items>

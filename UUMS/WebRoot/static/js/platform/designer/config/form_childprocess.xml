@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" />
+	<item type="block" inputWidth="auto">
+		<item type="input" name="flowName" label="流程名称" value="" inputWidth="240" />
+		<item type="newcolumn" />
+		<item type="input" name="flowKey" label="流程Key" value="" inputWidth="240" />
+	</item>
+</items>

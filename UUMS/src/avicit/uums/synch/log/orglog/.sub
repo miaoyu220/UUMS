@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=组织同步日志
+assembly.version=avicit/uums/synch/log/orglog
+assembly.type=Web
+assembly.modules=input,zhanshi,controller,ywc,jcc,designer,
+assembly.service=
+assembly.dao=
+assembly.auto=false

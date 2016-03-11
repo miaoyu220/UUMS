@@ -1,0 +1,30 @@
+a:link {
+font-size: 12px;
+color: #000000;
+text-decoration: none;
+}
+a:visited {
+font-size: 12px;
+color: #000000;
+text-decoration: none;
+}
+a:hover {
+font-size: 12px;
+color: #999999;
+text-decoration: underline;
+}
+.ui-widget-content {
+	border:0;
+}
+.ui-widget-header {
+	background: #e7e7ef url(images/title_bg.gif) no-repeat left top;
+	height:20px;
+	border-bottom:1px solid #9cbaef;
+}
+.ui-widget-header a{
+	color:#ffffff;
+}
+
+body {
+margin-right: 0px;
+} 

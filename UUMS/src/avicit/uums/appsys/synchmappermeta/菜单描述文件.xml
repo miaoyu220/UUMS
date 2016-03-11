@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+<!-- 菜单名称 -->
+	<menu menuName="用户管理">
+	
+		<menuCode>sysuser</menuCode>
+		<!-- 菜单访问地址 -->
+		<menuUrl>platform/sysuser/userlistinfo</menuUrl>
+		<!-- 菜单视图路径 -->
+		<menuView>avicit/platform6/modules/system/sysdept/sysuserList.jsp</menuView>
+		<!-- 菜单分组情况 -->
+		<menuGroup>第一组</menuGroup>
+		<!-- 菜单排序号 -->
+		<menuOrder>4</menuOrder>
+	</menu>
+	
+	
+</menus>

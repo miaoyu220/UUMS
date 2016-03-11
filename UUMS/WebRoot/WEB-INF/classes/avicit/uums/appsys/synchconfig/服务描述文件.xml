@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rests>
+<!-- 发布服务描述 -->
+	<rest restName="服务名称">
+	
+		<!-- 发布服务调用路径 -->
+		<restPath>/api/platform6/sysorguser/SysUser/reLoad/v1</restPath>
+		<!-- 发布服务调用类型：GET-POST -->
+		<restMethod>GET</restMethod>
+		<!-- 服务入参描述 -->
+		<restInArgs>
+			<!-- 服务入参名称 -->
+			<restArg argName="userId">
+			<!-- 服务入参类型 -->
+			<restArgType>String</restArgType>
+			<!-- 服务入参是否为空 -->
+			<restArgNull>no</restArgNull>
+			<restArgDesc>参数描述</restArgDesc>
+			</restArg>
+		</restInArgs>
+		<!-- 服务出参描述 -->
+		<restOutArgs>
+			<restArg argName="user">
+			<restArgType>SysUser</restArgType>
+			<restArgDesc>参数描述</restArgDesc>
+			</restArg>
+		</restOutArgs>
+		
+	</rest>
+	
+	
+</rests>

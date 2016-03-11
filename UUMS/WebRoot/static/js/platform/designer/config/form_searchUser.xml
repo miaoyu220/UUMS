@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="auto" />
+	<item type="block" inputWidth="auto">
+		<item type="input" name="search" label="用户名" value="" inputWidth="200"/>
+	</item>
+</items>

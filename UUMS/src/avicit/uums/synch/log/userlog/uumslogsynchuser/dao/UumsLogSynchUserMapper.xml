@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.synch.log.userlog.uumslogsynchuser.dao.UumsLogSynchUserDao">
+
+<resultMap id="UumsLogSynchUserDTOMap" type="avicit.uums.synch.log.userlog.uumslogsynchuser.dto.UumsLogSynchUserDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="appId" column="APP_ID" jdbcType="VARCHAR" />
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR" />
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="synchTime" column="SYNCH_TIME" jdbcType="TIMESTAMP" />
+		<result property="synchFlag" column="SYNCH_FLAG" jdbcType="VARCHAR" />
+		<result property="operFlag" column="OPER_FLAG" jdbcType="VARCHAR" />
+		<result property="synchType" column="SYNCH_TYPE" jdbcType="VARCHAR" />
+		<result property="faildCause" column="FAILD_CAUSE" jdbcType="VARCHAR" />
+		<result property="operator" column="OPERATOR" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 分页查询 UUMS_LOG_SYNCH_USER -->
+<select id="searchUumsLogSynchUserByPage" parameterType="java.util.Map" resultMap="UumsLogSynchUserDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.user_name                      ,
+		t1.user_id                        ,
+		t1.synch_time                     ,
+		t1.synch_flag                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.faild_cause                    ,
+		t1.operator                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_log_synch_user 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID like '%'||#{appId}||'%'
+			</if>
+			<if test="userName != null and userName != ''">
+				and t1.USER_NAME like '%'||#{userName}||'%'
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID like '%'||#{userId}||'%'
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG like '%'||#{synchFlag}||'%'
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG like '%'||#{operFlag}||'%'
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE like '%'||#{synchType}||'%'
+			</if>
+			<if test="faildCause != null and faildCause != ''">
+				and t1.FAILD_CAUSE like '%'||#{faildCause}||'%'
+			</if>
+			<if test="operator != null and operator != ''">
+				and t1.OPERATOR like '%'||#{operator}||'%'
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY like '%'||#{createdBy}||'%'
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE like '%'||#{creationDate}||'%'
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like '%'||#{lastUpdatedBy}||'%'
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like '%'||#{lastUpdateDate}||'%'
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like '%'||#{lastUpdateIp}||'%'
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION like '%'||#{version}||'%'
+			</if>
+		</where>
+			order by t1.SYNCH_TIME desc
+</select>
+<!-- 查询列表 UUMS_LOG_SYNCH_USER -->
+<select id="searchUumsLogSynchUser" parameterType="java.util.Map" resultMap="UumsLogSynchUserDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.user_name                      ,
+		t1.user_id                        ,
+		t1.synch_time                     ,
+		t1.synch_flag                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.faild_cause                    ,
+		t1.operator                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_log_synch_user 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID =#{appId}
+			</if>
+			<if test="userName != null and userName != ''">
+				and t1.USER_NAME =#{userName}
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID =#{userId}
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG =#{synchFlag}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG =#{operFlag}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE =#{synchType}
+			</if>
+			<if test="faildCause != null and faildCause != ''">
+				and t1.FAILD_CAUSE =#{faildCause}
+			</if>
+			<if test="operator != null and operator != ''">
+				and t1.OPERATOR =#{operator}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_LOG_SYNCH_USER -->
+<select id="findUumsLogSynchUserById" parameterType="java.util.Map" resultMap="UumsLogSynchUserDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.user_name                      ,
+		t1.user_id                        ,
+		t1.synch_time                     ,
+		t1.synch_flag                     ,
+		t1.oper_flag                      ,
+		t1.synch_type                     ,
+		t1.faild_cause                    ,
+		t1.operator                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_log_synch_user 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 UUMS_LOG_SYNCH_USER -->
+<insert id="insertUumsLogSynchUser" parameterType="avicit.uums.synch.log.userlog.uumslogsynchuser.dto.UumsLogSynchUserDTO">
+	insert into uums_log_synch_user
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="synchTime != null">
+				synch_time,
+			</if>
+			<if test="synchFlag != null">
+				synch_flag,
+			</if>
+			<if test="operFlag != null">
+				oper_flag,
+			</if>
+			<if test="synchType != null">
+				synch_type,
+			</if>
+			<if test="faildCause != null">
+				faild_cause,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="synchTime != null">
+				#{synchTime},
+			</if>
+			<if test="synchFlag != null">
+				#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="operFlag != null">
+				#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="faildCause != null">
+				#{faildCause,jdbcType=VARCHAR},
+			</if>
+			<if test="operator != null">
+				#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_LOG_SYNCH_USER -->
+<update id="updateUumsLogSynchUserSensitive" parameterType="avicit.uums.synch.log.userlog.uumslogsynchuser.dto.UumsLogSynchUserDTO">
+	update uums_log_synch_user t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				t1.user_name                      =#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				t1.user_id                        =#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="synchTime != null">
+				t1.synch_time                     =#{synchTime,jdbcType=DATE},
+			</if>
+			<if test="synchFlag != null">
+				t1.synch_flag                     =#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="operFlag != null">
+				t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="faildCause != null">
+				t1.faild_cause                    =#{faildCause,jdbcType=VARCHAR},
+			</if>
+			<if test="operator != null">
+				t1.operator                       =#{operator,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+	</set>
+		where t1.id = #{id} and t1.version =#{version}
+</update>
+<!-- 更新对象 UUMS_LOG_SYNCH_USER -->
+<update id="updateUumsLogSynchUserAll" parameterType="avicit.uums.synch.log.userlog.uumslogsynchuser.dto.UumsLogSynchUserDTO">
+	update uums_log_synch_user t1
+		set
+			t1.id                             =#{dto.id,jdbcType=VARCHAR},
+			t1.app_id                         =#{dto.appId,jdbcType=VARCHAR},
+			t1.user_name                      =#{dto.userName,jdbcType=VARCHAR},
+			t1.user_id                        =#{dto.userId,jdbcType=VARCHAR},
+			t1.synch_time                     =#{dto.synchTime,jdbcType=DATE},
+			t1.synch_flag                     =#{dto.synchFlag,jdbcType=VARCHAR},
+			t1.oper_flag                      =#{dto.operFlag,jdbcType=VARCHAR},
+			t1.synch_type                     =#{dto.synchType,jdbcType=VARCHAR},
+			t1.faild_cause                    =#{dto.faildCause,jdbcType=VARCHAR},
+			t1.operator                       =#{dto.operator,jdbcType=VARCHAR},
+			t1.created_by                     =#{dto.createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{dto.creationDate},
+			t1.last_updated_by                =#{dto.lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{dto.lastUpdateDate},
+			t1.last_update_ip                 =#{dto.lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+	where t1.id = #{dto.id} and t1.version =#{version}
+</update>
+<!-- 主键删除 UUMS_LOG_SYNCH_USER -->
+<delete id="deleteUumsLogSynchUserById" parameterType="java.lang.String">
+		delete from uums_log_synch_user t1 where t1.id = #{id}
+</delete>
+</mapper>

@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=应用系统注册
+assembly.version=avicit/uums/appsys/register
+assembly.type=Web
+assembly.modules=input,zhanshi,controller,ywc,jcc,designer,
+assembly.service=
+assembly.dao=
+assembly.auto=false

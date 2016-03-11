@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+    <head>
+    	<column type="ch" align="center" width="50">选择</column>
+        <column type="ed" align="left">变量名称</column>
+        <column type="ed" align="left">变量</column>
+        <column type="ed" align="left">初始值</column>
+        <column type="ed" align="left">变量类型</column>
+        <column type="ed" align="left">描述</column>
+    </head>
+</rows>

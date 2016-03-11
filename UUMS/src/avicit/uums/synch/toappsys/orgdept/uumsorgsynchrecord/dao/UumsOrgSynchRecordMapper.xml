@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.synch.toappsys.orgdept.uumsorgsynchrecord.dao.UumsOrgSynchRecordDao">
+
+<resultMap id="UumsOrgSynchRecordDTOMap" type="avicit.uums.synch.toappsys.orgdept.uumsorgsynchrecord.dto.UumsOrgSynchRecordDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="orgCode" column="ORG_CODE" jdbcType="VARCHAR" />
+		<result property="orgOrDept" column="ORG_OR_DEPT" jdbcType="VARCHAR" />
+		<result property="operFlag" column="OPER_FLAG" jdbcType="VARCHAR" />
+		<result property="synchFlag" column="SYNCH_FLAG" jdbcType="VARCHAR" />
+		<result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP" />
+		<result property="synchTime" column="SYNCH_TIME" jdbcType="TIMESTAMP" />
+		<result property="synchType" column="SYNCH_TYPE" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="parentOrgCode" column="PARENT_ORG_CODE" jdbcType="VARCHAR" />
+		<result property="sysOrgId" column="SYS_ORG_ID" jdbcType="VARCHAR" />
+		<result property="appId" column="APP_ID" jdbcType="VARCHAR" />
+		<result property="orgName" column="ORG_NAME" jdbcType="VARCHAR" />
+</resultMap>
+<!-- 分页查询 UUMS_ORG_SYNCH_RECORD -->
+<select id="searchUumsOrgSynchRecordByPage" parameterType="java.util.Map" resultMap="UumsOrgSynchRecordDTOMap">
+	select
+		t1.id                             ,
+		t1.org_code                       ,
+		t1.org_or_dept                    ,
+		t1.oper_flag                      ,
+		t1.synch_flag                     ,
+		t1.update_time                    ,
+		t1.synch_time                     ,
+		t1.synch_type                     ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.parent_org_code                ,
+		t1.sys_org_id                     ,
+		t1.app_id                         ,
+		t1.org_name
+	from uums_org_synch_record 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				and t1.ORG_CODE like '%'||#{orgCode}||'%'
+			</if>
+			<if test="orgOrDept != null and orgOrDept != ''">
+				and t1.ORG_OR_DEPT like '%'||#{orgOrDept}||'%'
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG like '%'||#{operFlag}||'%'
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG like '%'||#{synchFlag}||'%'
+			</if>
+			<if test="updateTimeBegin != null and updateTimeBegin != ''">
+				and t1.UPDATE_TIME &gt;= #{updateTimeBegin}
+			</if>
+			<if test="updateTimeEnd != null and updateTimeEnd != ''">
+				and t1.UPDATE_TIME &lt;= #{updateTimeEnd}
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE like '%'||#{synchType}||'%'
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY like '%'||#{createdBy}||'%'
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE like '%'||#{creationDate}||'%'
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like '%'||#{lastUpdatedBy}||'%'
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like '%'||#{lastUpdateDate}||'%'
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like '%'||#{lastUpdateIp}||'%'
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION like '%'||#{version}||'%'
+			</if>
+			<if test="parentOrgCode != null and parentOrgCode != ''">
+				and t1.PARENT_ORG_CODE like '%'||#{parentOrgCode}||'%'
+			</if>
+			<if test="sysOrgId != null and sysOrgId != ''">
+				and t1.SYS_ORG_ID like '%'||#{sysOrgId}||'%'
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID like '%'||#{appId}||'%'
+			</if>
+			<if test="orgName != null and orgName != ''">
+				and t1.ORG_NAME like '%'||#{orgName}||'%'
+			</if>
+		</where>
+			order by t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_ORG_SYNCH_RECORD -->
+<select id="searchUumsOrgSynchRecord" parameterType="java.util.Map" resultMap="UumsOrgSynchRecordDTOMap">
+	select
+		t1.id                             ,
+		t1.org_code                       ,
+		t1.org_or_dept                    ,
+		t1.oper_flag                      ,
+		t1.synch_flag                     ,
+		t1.update_time                    ,
+		t1.synch_time                     ,
+		t1.synch_type                     ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.parent_org_code                ,
+		t1.sys_org_id                     ,
+		t1.app_id                         ,
+		t1.org_name
+	from uums_org_synch_record 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				and t1.ORG_CODE =#{orgCode}
+			</if>
+			<if test="orgOrDept != null and orgOrDept != ''">
+				and t1.ORG_OR_DEPT =#{orgOrDept}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG =#{operFlag}
+			</if>
+			<if test="synchFlag != null and synchFlag != ''">
+				and t1.SYNCH_FLAG =#{synchFlag}
+			</if>
+			<if test="updateTimeBegin != null and updateTimeBegin != ''">
+				and t1.UPDATE_TIME &gt;= #{updateTimeBegin}
+			</if>
+			<if test="updateTimeEnd != null and updateTimeEnd != ''">
+				and t1.UPDATE_TIME &lt;= #{updateTimeEnd}
+			</if>
+			<if test="synchTimeBegin != null and synchTimeBegin != ''">
+				and t1.SYNCH_TIME &gt;= #{synchTimeBegin}
+			</if>
+			<if test="synchTimeEnd != null and synchTimeEnd != ''">
+				and t1.SYNCH_TIME &lt;= #{synchTimeEnd}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE =#{synchType}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="parentOrgCode != null and parentOrgCode != ''">
+				and t1.PARENT_ORG_CODE =#{parentOrgCode}
+			</if>
+			<if test="sysOrgId != null and sysOrgId != ''">
+				and t1.SYS_ORG_ID =#{sysOrgId}
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID =#{appId}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				and t1.ORG_NAME =#{orgName}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_ORG_SYNCH_RECORD -->
+<select id="findUumsOrgSynchRecordById" parameterType="java.util.Map" resultMap="UumsOrgSynchRecordDTOMap">
+	select
+		t1.id                             ,
+		t1.org_code                       ,
+		t1.org_or_dept                    ,
+		t1.oper_flag                      ,
+		t1.synch_flag                     ,
+		t1.update_time                    ,
+		t1.synch_time                     ,
+		t1.synch_type                     ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.parent_org_code                ,
+		t1.sys_org_id                     ,
+		t1.app_id                         ,
+		t1.org_name
+	from uums_org_synch_record 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 UUMS_ORG_SYNCH_RECORD -->
+<insert id="insertUumsOrgSynchRecord" parameterType="avicit.uums.synch.toappsys.orgdept.uumsorgsynchrecord.dto.UumsOrgSynchRecordDTO">
+	insert into uums_org_synch_record
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="orgCode != null">
+				org_code,
+			</if>
+			<if test="orgOrDept != null">
+				org_or_dept,
+			</if>
+			<if test="operFlag != null">
+				oper_flag,
+			</if>
+			<if test="synchFlag != null">
+				synch_flag,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="synchTime != null">
+				synch_time,
+			</if>
+			<if test="synchType != null">
+				synch_type,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="parentOrgCode != null">
+				parent_org_code,
+			</if>
+			<if test="sysOrgId != null">
+				sys_org_id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="orgName != null">
+				org_name,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				#{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgOrDept != null">
+				#{orgOrDept,jdbcType=VARCHAR},
+			</if>
+			<if test="operFlag != null">
+				#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchFlag != null">
+				#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=DATE},
+			</if>
+			<if test="synchTime != null">
+				#{synchTime,jdbcType=DATE},
+			</if>
+			<if test="synchType != null">
+				#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="parentOrgCode != null">
+				#{parentOrgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="sysOrgId != null">
+				#{sysOrgId,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				#{orgName,jdbcType=VARCHAR},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_ORG_SYNCH_RECORD -->
+<update id="updateUumsOrgSynchRecordSensitive" parameterType="avicit.uums.synch.toappsys.orgdept.uumsorgsynchrecord.dto.UumsOrgSynchRecordDTO">
+	update uums_org_synch_record t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				t1.org_code                       =#{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgOrDept != null">
+				t1.org_or_dept                    =#{orgOrDept,jdbcType=VARCHAR},
+			</if>
+			<if test="operFlag != null">
+				t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchFlag != null">
+				t1.synch_flag                     =#{synchFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				t1.update_time                    =#{updateTime},
+			</if>
+			<if test="synchTime != null">
+				t1.synch_time                     =#{synchTime},
+			</if>
+			<if test="synchType != null">
+				t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+			<if test="parentOrgCode != null">
+				t1.parent_org_code                =#{parentOrgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="sysOrgId != null">
+				t1.sys_org_id                     =#{sysOrgId,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				t1.org_name                       =#{orgName,jdbcType=VARCHAR},
+			</if>
+	</set>
+		where t1.id = #{id}
+</update>
+<!-- 更新对象 UUMS_ORG_SYNCH_RECORD -->
+<update id="updateUumsOrgSynchRecordAll" parameterType="avicit.uums.synch.toappsys.orgdept.uumsorgsynchrecord.dto.UumsOrgSynchRecordDTO">
+	update uums_org_synch_record t1
+		set
+			t1.id                             =#{id,jdbcType=VARCHAR},
+			t1.org_code                       =#{orgCode,jdbcType=VARCHAR},
+			t1.org_or_dept                    =#{orgOrDept,jdbcType=VARCHAR},
+			t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			t1.synch_flag                     =#{synchFlag,jdbcType=VARCHAR},
+			t1.update_time                    =#{updateTime},
+			t1.synch_time                     =#{synchTime},
+			t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{creationDate},
+			t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{lastUpdateDate},
+			t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+			t1.parent_org_code                =#{parentOrgCode,jdbcType=VARCHAR},
+			t1.sys_org_id                     =#{sysOrgId,jdbcType=VARCHAR},
+			t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			t1.org_name                       =#{orgName,jdbcType=VARCHAR},
+	where t1.id = #{id} 
+</update>
+<!-- 主键删除 UUMS_ORG_SYNCH_RECORD -->
+<delete id="deleteUumsOrgSynchRecordById" parameterType="java.lang.String">
+		delete from uums_org_synch_record t1 where t1.id = #{id}
+</delete>
+</mapper>

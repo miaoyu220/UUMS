@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=应用权限管理流程
+assembly.version=avicit/uums/permission/workflow
+assembly.type=Web
+assembly.modules=input,zhanshi,controller,ywc,jcc,designer,
+assembly.service=
+assembly.dao=
+assembly.auto=false

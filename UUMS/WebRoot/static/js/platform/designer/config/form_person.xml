@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-top" labelAlign="left" labelWidth="0" labelHeight="0" inputWidth="200" inputHeight="110" />
+	<item type="label">
+		<item type="container" name="dept_myGrid" label="" />
+		<item type="newcolumn" offset="2" />
+		<item type="container" name="user_myGrid" label="" />
+	</item>
+	<item type="label">
+		<item type="container" name="role_myGrid" label="" />
+		<item type="newcolumn" offset="2" />
+		<item type="container" name="group_myGrid" label="" />
+	</item>
+	<item type="label">
+		<item type="container" name="position_myGrid" label="" />
+		<item type="newcolumn" offset="2" />
+		<item type="container" name="relation_myGrid" label="" />
+	</item>
+</items>

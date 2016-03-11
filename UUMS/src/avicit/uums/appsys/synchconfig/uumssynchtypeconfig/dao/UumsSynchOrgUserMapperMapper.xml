@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dao.UumsSynchOrgUserMapperDao">
+
+<resultMap id="UumsSynchOrgUserMapperDTOMap" type="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchOrgUserMapperDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="mainType" column="MAIN_TYPE" jdbcType="VARCHAR" />
+		<result property="columnName" column="COLUMN_NAME" jdbcType="VARCHAR" />
+		<result property="columnCode" column="COLUMN_CODE" jdbcType="VARCHAR" />
+		<result property="dataType" column="DATA_TYPE" jdbcType="VARCHAR" />
+		<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+		<result property="comments" column="COMMENTS" jdbcType="VARCHAR" />
+		<result property="uumsAttribute" column="UUMS_ATTRIBUTE" jdbcType="VARCHAR" />
+		<result property="dataFormat" column="DATA_FORMAT" jdbcType="VARCHAR" />
+		<result property="typeId" column="TYPE_ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 根据pid查询对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<select id="findUumsSynchOrgUserMapperByPid" parameterType="java.util.Map" resultMap="UumsSynchOrgUserMapperDTOMap">
+	select
+		t1.id                             ,
+		t1.main_type                      ,
+		t1.column_name                    ,
+		t1.column_code                    ,
+		t1.data_type                      ,
+		t1.order_by                       ,
+		t1.comments                       ,
+		t1.uums_attribute                 ,
+		t1.data_format                    ,
+		t1.type_id                        ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_synch_org_user_mapper 	t1
+	where t1.type_id = #{pid}
+</select>
+
+<!-- 根据type_id和main_type查询对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<select id="findUumsSynchOrgUserMapperByPidAndMaintype" parameterType="java.util.Map" resultMap="UumsSynchOrgUserMapperDTOMap">
+	select
+		t1.id                             ,
+		t1.main_type                      ,
+		t1.column_name                    ,
+		t1.column_code                    ,
+		t1.data_type                      ,
+		t1.order_by                       ,
+		t1.comments                       ,
+		t1.uums_attribute                 ,
+		t1.data_format                    ,
+		t1.type_id                        ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_synch_org_user_mapper 	t1
+		<where>
+			<if test="typeId != null and typeId != ''">
+				and t1.type_id = #{typeId}
+			</if>
+			<if test="mainType != null and mainType != ''">
+				and t1.main_type = #{mainType}
+			</if>
+		</where>
+		order by t1.order_by asc
+</select>
+
+<!-- 根据type_id和main_type且column_code不为空条件查询对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<select id="findMapperByPidAndMaintypeAndColumnCode" parameterType="java.util.Map" resultMap="UumsSynchOrgUserMapperDTOMap">
+	select
+		t1.id                             ,
+		t1.main_type                      ,
+		t1.column_name                    ,
+		t1.column_code                    ,
+		t1.data_type                      ,
+		t1.order_by                       ,
+		t1.comments                       ,
+		t1.uums_attribute                 ,
+		t1.data_format                    ,
+		t1.type_id                        ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_synch_org_user_mapper 	t1
+		<where>
+			<if test="typeId != null and typeId != ''">
+				and t1.type_id = #{typeId}
+			</if>
+			<if test="mainType != null and mainType != ''">
+				and t1.main_type = #{mainType} and t1.column_code is not null
+			</if>
+			
+		</where>
+		order by t1.order_by asc
+</select>
+
+<!-- 分页查询 UUMS_SYNCH_ORG_USER_MAPPER -->
+<select id="searchUumsSynchOrgUserMapperByPage" parameterType="java.util.Map" resultMap="UumsSynchOrgUserMapperDTOMap">
+	select
+		t1.id                             ,
+		t1.main_type                      ,
+		t1.column_name                    ,
+		t1.column_code                    ,
+		t1.data_type                      ,
+		t1.order_by                       ,
+		t1.comments                       ,
+		t1.uums_attribute                 ,
+		t1.data_format                    ,
+		t1.type_id                        ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_synch_org_user_mapper 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="mainType != null and mainType != ''">
+				and t1.MAIN_TYPE like '%'||#{mainType}||'%'
+			</if>
+			<if test="columnName != null and columnName != ''">
+				and t1.COLUMN_NAME like '%'||#{columnName}||'%'
+			</if>
+			<if test="columnCode != null and columnCode != ''">
+				and t1.COLUMN_CODE like '%'||#{columnCode}||'%'
+			</if>
+			<if test="dataType != null and dataType != ''">
+				and t1.DATA_TYPE like '%'||#{dataType}||'%'
+			</if>
+			<if test="orderBy != null and orderBy != ''">
+				and t1.ORDER_BY like '%'||#{orderBy}||'%'
+			</if>
+			<if test="comments != null and comments != ''">
+				and t1.COMMENTS like '%'||#{comments}||'%'
+			</if>
+			<if test="uumsAttribute != null and uumsAttribute != ''">
+				and t1.UUMS_ATTRIBUTE like '%'||#{uumsAttribute}||'%'
+			</if>
+			<if test="dataFormat != null and dataFormat != ''">
+				and t1.DATA_FORMAT like '%'||#{dataFormat}||'%'
+			</if>
+			<if test="typeId != null and typeId != ''">
+				and t1.TYPE_ID like '%'||#{typeId}||'%'
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY like '%'||#{createdBy}||'%'
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE like '%'||#{creationDate}||'%'
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like '%'||#{lastUpdatedBy}||'%'
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like '%'||#{lastUpdateDate}||'%'
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like '%'||#{lastUpdateIp}||'%'
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION like '%'||#{version}||'%'
+			</if>
+		</where>
+			order by t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_SYNCH_ORG_USER_MAPPER -->
+<select id="searchUumsSynchOrgUserMapper" parameterType="java.util.Map" resultMap="UumsSynchOrgUserMapperDTOMap">
+	select
+		t1.id                             ,
+		t1.main_type                      ,
+		t1.column_name                    ,
+		t1.column_code                    ,
+		t1.data_type                      ,
+		t1.order_by                       ,
+		t1.comments                       ,
+		t1.uums_attribute                 ,
+		t1.data_format                    ,
+		t1.type_id                        ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_synch_org_user_mapper 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="mainType != null and mainType != ''">
+				and t1.MAIN_TYPE =#{mainType}
+			</if>
+			<if test="columnName != null and columnName != ''">
+				and t1.COLUMN_NAME =#{columnName}
+			</if>
+			<if test="columnCode != null and columnCode != ''">
+				and t1.COLUMN_CODE =#{columnCode}
+			</if>
+			<if test="dataType != null and dataType != ''">
+				and t1.DATA_TYPE =#{dataType}
+			</if>
+			<if test="orderBy != null and orderBy != ''">
+				and t1.ORDER_BY =#{orderBy}
+			</if>
+			<if test="comments != null and comments != ''">
+				and t1.COMMENTS =#{comments}
+			</if>
+			<if test="uumsAttribute != null and uumsAttribute != ''">
+				and t1.UUMS_ATTRIBUTE =#{uumsAttribute}
+			</if>
+			<if test="dataFormat != null and dataFormat != ''">
+				and t1.DATA_FORMAT =#{dataFormat}
+			</if>
+			<if test="typeId != null and typeId != ''">
+				and t1.TYPE_ID =#{typeId}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<select id="findUumsSynchOrgUserMapperById" parameterType="java.util.Map" resultMap="UumsSynchOrgUserMapperDTOMap">
+	select
+		t1.id                             ,
+		t1.main_type                      ,
+		t1.column_name                    ,
+		t1.column_code                    ,
+		t1.data_type                      ,
+		t1.order_by                       ,
+		t1.comments                       ,
+		t1.uums_attribute                 ,
+		t1.data_format                    ,
+		t1.type_id                        ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_synch_org_user_mapper 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<insert id="insertUumsSynchOrgUserMapper" parameterType="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchOrgUserMapperDTO">
+	insert into uums_synch_org_user_mapper
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="mainType != null">
+				main_type,
+			</if>
+			<if test="columnName != null">
+				column_name,
+			</if>
+			<if test="columnCode != null">
+				column_code,
+			</if>
+			<if test="dataType != null">
+				data_type,
+			</if>
+			<if test="orderBy != null">
+				order_by,
+			</if>
+			<if test="comments != null">
+				comments,
+			</if>
+			<if test="uumsAttribute != null">
+				uums_attribute,
+			</if>
+			<if test="dataFormat != null">
+				data_format,
+			</if>
+			<if test="typeId != null">
+				type_id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="mainType != null">
+				#{mainType,jdbcType=VARCHAR},
+			</if>
+			<if test="columnName != null">
+				#{columnName,jdbcType=VARCHAR},
+			</if>
+			<if test="columnCode != null">
+				#{columnCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dataType != null">
+				#{dataType,jdbcType=VARCHAR},
+			</if>
+			<if test="orderBy != null">
+				#{orderBy,jdbcType=DECIMAL},
+			</if>
+			<if test="comments != null">
+				#{comments,jdbcType=VARCHAR},
+			</if>
+			<if test="uumsAttribute != null">
+				#{uumsAttribute,jdbcType=VARCHAR},
+			</if>
+			<if test="dataFormat != null">
+				#{dataFormat,jdbcType=VARCHAR},
+			</if>
+			<if test="typeId != null">
+				#{typeId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<update id="updateUumsSynchOrgUserMapperSensitive" parameterType="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchOrgUserMapperDTO">
+	update uums_synch_org_user_mapper t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="mainType != null">
+				t1.main_type                      =#{mainType,jdbcType=VARCHAR},
+			</if>
+			<if test="columnName != null">
+				t1.column_name                    =#{columnName,jdbcType=VARCHAR},
+			</if>
+			<if test="columnCode != null">
+				t1.column_code                    =#{columnCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dataType != null">
+				t1.data_type                      =#{dataType,jdbcType=VARCHAR},
+			</if>
+			<if test="orderBy != null">
+				t1.order_by                       =#{orderBy,jdbcType=DECIMAL},
+			</if>
+			<if test="comments != null">
+				t1.comments                       =#{comments,jdbcType=VARCHAR},
+			</if>
+			<if test="uumsAttribute != null">
+				t1.uums_attribute                 =#{uumsAttribute,jdbcType=VARCHAR},
+			</if>
+			<if test="dataFormat != null">
+				t1.data_format                    =#{dataFormat,jdbcType=VARCHAR},
+			</if>
+			<if test="typeId != null">
+				t1.type_id                        =#{typeId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+	</set>
+		where t1.id = #{id} and t1.version =#{version}
+</update>
+<!-- 更新对象 UUMS_SYNCH_ORG_USER_MAPPER -->
+<update id="updateUumsSynchOrgUserMapperAll" parameterType="avicit.uums.appsys.synchconfig.uumssynchtypeconfig.dto.UumsSynchOrgUserMapperDTO">
+	update uums_synch_org_user_mapper t1
+		set
+			t1.id                             =#{id,jdbcType=VARCHAR},
+			t1.main_type                      =#{mainType,jdbcType=VARCHAR},
+			t1.column_name                    =#{columnName,jdbcType=VARCHAR},
+			t1.column_code                    =#{columnCode,jdbcType=VARCHAR},
+			t1.data_type                      =#{dataType,jdbcType=VARCHAR},
+			t1.order_by                       =#{orderBy,jdbcType=DECIMAL},
+			t1.comments                       =#{comments,jdbcType=VARCHAR},
+			t1.uums_attribute                 =#{uumsAttribute,jdbcType=VARCHAR},
+			t1.data_format                    =#{dataFormat,jdbcType=VARCHAR},
+			t1.type_id                        =#{typeId,jdbcType=VARCHAR},
+			t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{creationDate},
+			t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{lastUpdateDate},
+			t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+	where t1.id = #{dto.id} and t1.version =#{version}
+</update>
+<!-- 主键删除 UUMS_SYNCH_ORG_USER_MAPPER -->
+<delete id="deleteUumsSynchOrgUserMapperById" parameterType="java.lang.String">
+		delete from uums_synch_org_user_mapper t1 where t1.id = #{id}
+</delete>
+</mapper>

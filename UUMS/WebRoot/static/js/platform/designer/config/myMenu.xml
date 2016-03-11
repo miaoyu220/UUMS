@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<menu>
+	<item id="new" text="新建" img="new.gif" imgdis="new_dis.gif" />
+	<item id="open" text="打开" img="open.gif" imgdis="open_dis.gif" />
+	<item id="save" text="保存" img="save.gif" imgdis="save_dis.gif" />
+	<item id="close" text="关闭" img="delete.gif" imgdis="delete_dis.gif" />
+	<item type="separator" />
+	<item text="对齐" img="grid.gif" imgdis="grid.gif">
+		<item id="align-left" text="左对齐" img="grid.gif" imgdis="grid.gif"/>
+		<item id="align-right" text="右对齐" img="grid.gif" imgdis="grid.gif"/>
+		<item type="separator" />
+		<item id="align-top" text="上对齐" img="grid.gif" imgdis="grid.gif"/>
+		<item id="align-bottom" text="下对齐" img="grid.gif" imgdis="grid.gif"/>
+		<item type="separator" />
+		<item id="com-width" text="等宽" img="layoutV.gif" imgdis="layoutV.gif"/>
+		<item id="com-height" text="等高" img="layoutH.gif" imgdis="layoutH.gif"/>
+	</item>
+	<item type="separator" />
+	<item text="小工具" img="settings.gif" imgdis="settings.gif">
+		<item id="showGraph" text="显示graph文件" img="page_setup.gif" imgdis="page_setup_dis.gif" />
+		<item id="showProcess" text="显示流程文件" img="page_setup.gif" imgdis="page_setup_dis.gif" />
+		<item id="showPng" text="显示图片" img="page_setup.gif" imgdis="page_setup_dis.gif" />
+		<item type="separator" />
+		<item id="view" text="窗口列表" img="page_range.gif" imgdis="page_range.gif" />
+		<item type="separator" />
+		<item id="showHeader" text="显示窗口Header" img="paste.gif" imgdis="paste.gif" />
+		<item id="hideHeader" text="隐藏窗口Header" img="paste_dis.gif" imgdis="paste_dis.gif" />
+		<item type="separator" />
+		<item id="closeAll" text="关闭所有窗口" img="delete.gif" imgdis="delete_dis.gif" />
+	</item>
+</menu>

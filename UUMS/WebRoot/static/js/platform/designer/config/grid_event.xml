@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+    <head>
+        <column type="ed" align="left">常量名</column>
+        <column type="ed" align="left">常量值</column>
+    </head>
+    <row id="0">
+		<cell></cell>
+		<cell></cell>
+	</row>
+ 	<row id="1">
+		<cell></cell>
+		<cell></cell>
+	</row>
+	<row id="2">
+		<cell></cell>
+		<cell></cell>
+	</row>
+	<row id="3">
+		<cell></cell>
+		<cell></cell>
+	</row>
+	<row id="4">
+		<cell></cell>
+		<cell></cell>
+	</row>
+	<row id="5">
+		<cell></cell>
+		<cell></cell>
+	</row>
+	<row id="6">
+		<cell></cell>
+		<cell></cell>
+	</row>
+	<row id="7">
+		<cell></cell>
+		<cell></cell>
+	</row>
+</rows>

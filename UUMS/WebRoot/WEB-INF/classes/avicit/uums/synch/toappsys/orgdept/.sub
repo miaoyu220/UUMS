@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=组织部门同步记录
+assembly.version=avicit/uums/synch/toappsys/orgdept
+assembly.type=Web
+assembly.modules=input,zhanshi,controller,ywc,jcc,designer,
+assembly.service=
+assembly.dao=
+assembly.auto=false

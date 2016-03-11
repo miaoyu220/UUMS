@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.appsys.register.uumsappsys.dao.UumsAppSysDao">
+
+<resultMap id="UumsAppSysDTOMap" type="avicit.uums.appsys.register.uumsappsys.dto.UumsAppSysDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="appCode" column="APP_CODE" jdbcType="VARCHAR" />
+		<result property="appName" column="APP_NAME" jdbcType="VARCHAR" />
+		<result property="appDescribe" column="APP_DESCRIBE" jdbcType="VARCHAR" />
+		<result property="securitAdmin" column="SECURIT_ADMIN" jdbcType="VARCHAR" />
+		<result property="isDataSource" column="IS_DATA_SOURCE" jdbcType="VARCHAR" />
+		<result property="isAutoCreateAccount" column="IS_AUTO_CREATE_ACCOUNT" jdbcType="VARCHAR" />
+		<result property="addAuditFlag" column="ADD_AUDIT_FLAG" jdbcType="VARCHAR" />
+		<result property="editAuditFlag" column="EDIT_AUDIT_FLAG" jdbcType="VARCHAR" />
+		<result property="delAuditFlag" column="DEL_AUDIT_FLAG" jdbcType="VARCHAR" />
+		<result property="synchType" column="SYNCH_TYPE" jdbcType="VARCHAR" />
+		<result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+		<result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP" />
+		<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 分页查询 UUMS_APP_SYS -->
+<select id="searchUumsAppSysByPage" parameterType="java.util.Map" resultMap="UumsAppSysDTOMap">
+	select
+		t1.id                             ,
+		t1.app_code                       ,
+		t1.app_name                       ,
+		t1.app_describe                   ,
+		t1.securit_admin                  ,
+		t1.is_data_source                 ,
+		t1.IS_AUTO_CREATE_ACCOUNT         ,
+		t1.add_audit_flag                 ,
+		t1.edit_audit_flag                ,
+		t1.del_audit_flag                 ,
+		t1.synch_type                     ,
+		t1.create_time                    ,
+		t1.update_time                    ,
+		t1.order_by                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_app_sys 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="appCode != null and appCode != ''">
+				and t1.APP_CODE like '%'||#{appCode}||'%'
+			</if>
+			<if test="appName != null and appName != ''">
+				and t1.APP_NAME like '%'||#{appName}||'%'
+			</if>
+			<if test="appDescribe != null and appDescribe != ''">
+				and t1.APP_DESCRIBE like '%'||#{appDescribe}||'%'
+			</if>
+			<if test="securitAdmin != null and securitAdmin != ''">
+				and t1.SECURIT_ADMIN like '%'||#{securitAdmin}||'%'
+			</if>
+			<if test="isDataSource != null and isDataSource != ''">
+				and t1.IS_DATA_SOURCE like '%'||#{isDataSource}||'%'
+			</if>
+			<if test="isAutoCreateAccount != null and isAutoCreateAccount != ''">
+				and t1.IS_AUTO_CREATE_ACCOUNT like '%'||#{isAutoCreateAccount}||'%'
+			</if>
+			<if test="addAuditFlag != null and addAuditFlag != ''">
+				and t1.ADD_AUDIT_FLAG like '%'||#{addAuditFlag}||'%'
+			</if>
+			<if test="editAuditFlag != null and editAuditFlag != ''">
+				and t1.EDIT_AUDIT_FLAG like '%'||#{editAuditFlag}||'%'
+			</if>
+			<if test="delAuditFlag != null and delAuditFlag != ''">
+				and t1.DEL_AUDIT_FLAG like '%'||#{delAuditFlag}||'%'
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE like '%'||#{synchType}||'%'
+			</if>
+			<if test="createTimeBegin != null and createTimeBegin != ''">
+				and t1.CREATE_TIME &gt;= #{createTimeBegin}
+			</if>
+			<if test="createTimeEnd != null and createTimeEnd != ''">
+				and t1.CREATE_TIME &lt;= #{createTimeEnd}
+			</if>
+			<if test="updateTimeBegin != null and updateTimeBegin != ''">
+				and t1.UPDATE_TIME &gt;= #{updateTimeBegin}
+			</if>
+			<if test="updateTimeEnd != null and updateTimeEnd != ''">
+				and t1.UPDATE_TIME &lt;= #{updateTimeEnd}
+			</if>
+			<if test="orderBy != null and orderBy != ''">
+				and t1.ORDER_BY like '%'||#{orderBy}||'%'
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY like '%'||#{createdBy}||'%'
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE like '%'||#{creationDate}||'%'
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like '%'||#{lastUpdatedBy}||'%'
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like '%'||#{lastUpdateDate}||'%'
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like '%'||#{lastUpdateIp}||'%'
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION like '%'||#{version}||'%'
+			</if>
+		</where>
+			order by t1.ORDER_BY, t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_APP_SYS -->
+<select id="searchUumsAppSys" parameterType="java.util.Map" resultMap="UumsAppSysDTOMap">
+	select
+		t1.id                             ,
+		t1.app_code                       ,
+		t1.app_name                       ,
+		t1.app_describe                   ,
+		t1.securit_admin                  ,
+		t1.is_data_source                 ,
+		t1.IS_AUTO_CREATE_ACCOUNT         ,
+		t1.add_audit_flag                 ,
+		t1.edit_audit_flag                ,
+		t1.del_audit_flag                 ,
+		t1.synch_type                     ,
+		t1.create_time                    ,
+		t1.update_time                    ,
+		t1.order_by                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_app_sys 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="appCode != null and appCode != ''">
+				and t1.APP_CODE =#{appCode}
+			</if>
+			<if test="appName != null and appName != ''">
+				and t1.APP_NAME =#{appName}
+			</if>
+			<if test="appDescribe != null and appDescribe != ''">
+				and t1.APP_DESCRIBE =#{appDescribe}
+			</if>
+			<if test="securitAdmin != null and securitAdmin != ''">
+				and t1.SECURIT_ADMIN =#{securitAdmin}
+			</if>
+			<if test="isDataSource != null and isDataSource != ''">
+				and t1.IS_DATA_SOURCE =#{isDataSource}
+			</if>
+			<if test="isAutoCreateAccount != null and isAutoCreateAccount != ''">
+				and t1.IS_AUTO_CREATE_ACCOUNT = #{isAutoCreateAccount}
+			</if>
+			<if test="addAuditFlag != null and addAuditFlag != ''">
+				and t1.ADD_AUDIT_FLAG =#{addAuditFlag}
+			</if>
+			<if test="editAuditFlag != null and editAuditFlag != ''">
+				and t1.EDIT_AUDIT_FLAG =#{editAuditFlag}
+			</if>
+			<if test="delAuditFlag != null and delAuditFlag != ''">
+				and t1.DEL_AUDIT_FLAG =#{delAuditFlag}
+			</if>
+			<if test="synchType != null and synchType != ''">
+				and t1.SYNCH_TYPE =#{synchType}
+			</if>
+			<if test="createTimeBegin != null and createTimeBegin != ''">
+				and t1.CREATE_TIME &gt;= #{createTimeBegin}
+			</if>
+			<if test="createTimeEnd != null and createTimeEnd != ''">
+				and t1.CREATE_TIME &lt;= #{createTimeEnd}
+			</if>
+			<if test="updateTimeBegin != null and updateTimeBegin != ''">
+				and t1.UPDATE_TIME &gt;= #{updateTimeBegin}
+			</if>
+			<if test="updateTimeEnd != null and updateTimeEnd != ''">
+				and t1.UPDATE_TIME &lt;= #{updateTimeEnd}
+			</if>
+			<if test="orderBy != null and orderBy != ''">
+				and t1.ORDER_BY =#{orderBy}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null and version != ''">
+				and t1.VERSION =#{version}
+			</if>
+		</where>
+		order by t1.order_by asc;
+</select>
+<!-- 主键查询对象 UUMS_APP_SYS -->
+<select id="findUumsAppSysById" parameterType="java.util.Map" resultMap="UumsAppSysDTOMap">
+	select
+		t1.id                             ,
+		t1.app_code                       ,
+		t1.app_name                       ,
+		t1.app_describe                   ,
+		t1.securit_admin                  ,
+		t1.is_data_source                 ,
+		t1.IS_AUTO_CREATE_ACCOUNT         ,
+		t1.add_audit_flag                 ,
+		t1.edit_audit_flag                ,
+		t1.del_audit_flag                 ,
+		t1.synch_type                     ,
+		t1.create_time                    ,
+		t1.update_time                    ,
+		t1.order_by                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_app_sys 	t1
+		where t1.id = #{id}
+</select>
+<!-- 根据应系统编码查询对象 UUMS_APP_SYS -->
+<select id="findUumsAppSysByAppCode" parameterType="java.lang.String" resultMap="UumsAppSysDTOMap">
+	select
+		t1.id                             ,
+		t1.app_code                       ,
+		t1.app_name                       ,
+		t1.app_describe                   ,
+		t1.securit_admin                  ,
+		t1.is_data_source                 ,
+		t1.IS_AUTO_CREATE_ACCOUNT         ,
+		t1.add_audit_flag                 ,
+		t1.edit_audit_flag                ,
+		t1.del_audit_flag                 ,
+		t1.synch_type                     ,
+		t1.create_time                    ,
+		t1.update_time                    ,
+		t1.order_by                       ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        
+	from uums_app_sys 	t1
+		where t1.app_code = #{appCode}
+</select>
+<!-- 新增对象 UUMS_APP_SYS -->
+<insert id="insertUumsAppSys" parameterType="avicit.uums.appsys.register.uumsappsys.dto.UumsAppSysDTO">
+	insert into uums_app_sys
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="appCode != null">
+				app_code,
+			</if>
+			<if test="appName != null">
+				app_name,
+			</if>
+			<if test="appDescribe != null">
+				app_describe,
+			</if>
+			<if test="securitAdmin != null">
+				securit_admin,
+			</if>
+			<if test="isDataSource != null">
+				is_data_source,
+			</if>
+			<if test="isAutoCreateAccount != null">
+				IS_AUTO_CREATE_ACCOUNT,
+			</if>
+			<if test="addAuditFlag != null">
+				add_audit_flag,
+			</if>
+			<if test="editAuditFlag != null">
+				edit_audit_flag,
+			</if>
+			<if test="delAuditFlag != null">
+				del_audit_flag,
+			</if>
+			<if test="synchType != null">
+				synch_type,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="orderBy != null">
+				order_by,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appCode != null">
+				#{appCode,jdbcType=VARCHAR},
+			</if>
+			<if test="appName != null">
+				#{appName,jdbcType=VARCHAR},
+			</if>
+			<if test="appDescribe != null">
+				#{appDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="securitAdmin != null">
+				#{securitAdmin,jdbcType=VARCHAR},
+			</if>
+			<if test="isDataSource != null">
+				#{isDataSource,jdbcType=VARCHAR},
+			</if>
+			<if test="isAutoCreateAccount != null">
+				#{isAutoCreateAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="addAuditFlag != null">
+				#{addAuditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="editAuditFlag != null">
+				#{editAuditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="delAuditFlag != null">
+				#{delAuditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime},
+			</if>
+			<if test="orderBy != null">
+				#{orderBy,jdbcType=DECIMAL},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_APP_SYS -->
+<update id="updateUumsAppSysSensitive" parameterType="avicit.uums.appsys.register.uumsappsys.dto.UumsAppSysDTO">
+	update uums_app_sys t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appCode != null">
+				t1.app_code                       =#{appCode,jdbcType=VARCHAR},
+			</if>
+			<if test="appName != null">
+				t1.app_name                       =#{appName,jdbcType=VARCHAR},
+			</if>
+			<if test="appDescribe != null">
+				t1.app_describe                   =#{appDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="securitAdmin != null">
+				t1.securit_admin                  =#{securitAdmin,jdbcType=VARCHAR},
+			</if>
+			<if test="isDataSource != null">
+				t1.is_data_source                 =#{isDataSource,jdbcType=VARCHAR},
+			</if>
+			<if test="isAutoCreateAccount != null">
+				t1.IS_AUTO_CREATE_ACCOUNT         =#{isAutoCreateAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="addAuditFlag != null">
+				t1.add_audit_flag                 =#{addAuditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="editAuditFlag != null">
+				t1.edit_audit_flag                =#{editAuditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="delAuditFlag != null">
+				t1.del_audit_flag                 =#{delAuditFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="synchType != null">
+				t1.synch_type                     =#{synchType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				t1.create_time                    =#{createTime},
+			</if>
+			<if test="updateTime != null">
+				t1.update_time                    =#{updateTime},
+			</if>
+			<if test="orderBy != null">
+				t1.order_by                       =#{orderBy,jdbcType=DECIMAL},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+	</set>
+		where t1.id = #{id} and t1.version =#{version}
+</update>
+<!-- 更新对象 UUMS_APP_SYS -->
+<update id="updateUumsAppSysAll" parameterType="avicit.uums.appsys.register.uumsappsys.dto.UumsAppSysDTO">
+	update uums_app_sys t1
+		set
+			t1.id                             =#{dto.id,jdbcType=VARCHAR},
+			t1.app_code                       =#{dto.appCode,jdbcType=VARCHAR},
+			t1.app_name                       =#{dto.appName,jdbcType=VARCHAR},
+			t1.app_describe                   =#{dto.appDescribe,jdbcType=VARCHAR},
+			t1.securit_admin                  =#{dto.securitAdmin,jdbcType=VARCHAR},
+			t1.is_data_source                 =#{dto.isDataSource,jdbcType=VARCHAR},
+			t1.IS_AUTO_CREATE_ACCOUNT         =#{dto.isAutoCreateAccount,jdbcType=VARCHAR},
+			t1.add_audit_flag                 =#{dto.addAuditFlag,jdbcType=VARCHAR},
+			t1.edit_audit_flag                =#{dto.editAuditFlag,jdbcType=VARCHAR},
+			t1.del_audit_flag                 =#{dto.delAuditFlag,jdbcType=VARCHAR},
+			t1.synch_type                     =#{dto.synchType,jdbcType=VARCHAR},
+			t1.create_time                    =#{dto.createTime,jdbcType=DATE},
+			t1.update_time                    =#{dto.updateTime,jdbcType=DATE},
+			t1.order_by                       =#{dto.orderBy,jdbcType=DECIMAL},
+			t1.created_by                     =#{dto.createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{dto.creationDate},
+			t1.last_updated_by                =#{dto.lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{dto.lastUpdateDate},
+			t1.last_update_ip                 =#{dto.lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+	where t1.id = #{dto.id} and t1.version =#{version}
+</update>
+<!-- 主键删除 UUMS_APP_SYS -->
+<delete id="deleteUumsAppSysById" parameterType="java.lang.String">
+		delete from uums_app_sys t1 where t1.id = #{id}
+</delete>
+</mapper>

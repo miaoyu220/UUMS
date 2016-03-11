@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE shardingConfig PUBLIC "-//shardbatis.avicit.com//DTD Shardbatis 2.0//EN"
+  "http://shardbatis.avicit.com/dtd/shardbatis-config.dtd">
+<shardingConfig>
+	<!--  
+        <ignoreList>
+        	<value></value>
+        </ignoreList>
+        <parseList>
+        	<value></value>
+        </parseList>
+         <strategy tableName="DEMO_BUSINESS_TRIP" strategyClass="avicit.platform6.demo.demobusinesstrip.dao.DemoBusinessTripShardImpl"/>
+  -->
+       
+     
+      	<strategy tableName="BPM_LOB" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+        <strategy tableName="BPM_VARIABLE" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>  
+      	<strategy tableName="BPM_HIST_VAR" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+      	<strategy tableName="BPM_HIST_TASK" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+      	<strategy tableName="BPM_TASK" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+      	<strategy tableName="BPM_TRACK" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+      	<strategy tableName="BPM_HIST_ACTINST_PREV" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+      	<strategy tableName="BPM_HIST_ACTINST" strategyClass="avicit.platform6.core.mybatis.shard.strategy.impl.BpmVariableShardStrategy"/>
+      		
+</shardingConfig>

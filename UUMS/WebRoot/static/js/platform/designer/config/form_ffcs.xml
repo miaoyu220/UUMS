@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item type="settings" position="label-left" labelAlign="center" labelWidth="80" inputWidth="240" />
+	<item type="label">
+		<item type="input" name="name" label="方法参数名" value="" required="true" />
+		<item type="newcolumn" />
+		<item type="select" name="type" label="方法参数类型">
+			<option value="string" text="string" />
+			<option value="int" text="int" />
+			<option value="long" text="long" />
+			<option value="float" text="float" />
+			<option value="double" text="double" />
+			<option value="true" text="true" />
+			<option value="false" text="false" />
+			<option value="object" text="object" />
+		</item>
+	</item>
+	<item type="label">
+		<item type="input" name="init" label="初始值" value="" />
+		<item type="newcolumn" />
+	</item>
+</items>

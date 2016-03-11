@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.uums.permission.workflow.uumsuserappworkflow.dao.UumsUserAppWorkflowDao">
+
+<resultMap id="UumsUserAppWorkflowDTOMap" type="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsUserAppWorkflowDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="appId" column="APP_ID" jdbcType="VARCHAR" />
+		<result property="workFlowNo" column="WORK_FLOW_NO" jdbcType="VARCHAR" />
+		<result property="submitter" column="SUBMITTER" jdbcType="VARCHAR" />
+		<result property="submitDate" column="SUBMIT_DATE" jdbcType="TIMESTAMP" />
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="operFlag" column="OPER_FLAG" jdbcType="VARCHAR" />
+		<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+		<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 分页查询 UUMS_USER_APP_WORKFLOW -->
+<select id="searchUumsUserAppWorkflowByPage" parameterType="java.util.Map" resultMap="UumsUserAppWorkflowDTOMap">
+	select
+		v.activityalias_                 ,
+		v.businessstate_                 ,
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.work_flow_no                   ,
+		t1.submitter                      ,
+		t1.submit_date                    ,
+		t1.oper_flag                      ,
+		t1.user_id                        
+	from uums_user_app_workflow 	t1 left join BPM_CLIENT_HIST_PROCINST_V v on t1.id = v.formid_
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID like '%'||#{id}||'%'
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID like '%'||#{appId}||'%'
+			</if>
+			<if test="workFlowNo != null and workFlowNo != ''">
+				and t1.WORK_FLOW_NO like '%'||#{workFlowNo}||'%'
+			</if>
+			<if test="submitter != null and submitter != ''">
+				and t1.SUBMITTER like '%'||#{submitter}||'%'
+			</if>
+			<if test="submitDateBegin != null and submitDateBegin != ''">
+				and t1.SUBMIT_DATE &gt;= #{submitDateBegin}
+			</if>
+			<if test="submitDateEnd != null and submitDateEnd != ''">
+				and t1.SUBMIT_DATE &lt;= #{submitDateEnd}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG like '%'||#{operFlag}||'%'
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID like '%'||#{userId}||'%'
+			</if>
+			<if test="bpmType == 'my'">
+				and exists (select 1 from BPM_CLIENT_HIST_TASK_V os where os.task_b_id_ = t1.id and os.assignee_ = #{currUserId})
+			</if>
+			<if test="bpmState != null and bpmState != 'all'">
+				and v.businessstate_ = #{bpmState}
+			</if>
+		</where>
+			order by t1.creation_date desc
+</select>
+<!-- 查询列表 UUMS_USER_APP_WORKFLOW -->
+<select id="searchUumsUserAppWorkflow" parameterType="java.util.Map" resultMap="UumsUserAppWorkflowDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.work_flow_no                   ,
+		t1.submitter                      ,
+		t1.submit_date                    ,
+		t1.oper_flag                      ,
+		t1.user_id                        
+	from uums_user_app_workflow 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="appId != null and appId != ''">
+				and t1.APP_ID =#{appId}
+			</if>
+			<if test="workFlowNo != null and workFlowNo != ''">
+				and t1.WORK_FLOW_NO =#{workFlowNo}
+			</if>
+			<if test="submitter != null and submitter != ''">
+				and t1.SUBMITTER =#{submitter}
+			</if>
+			<if test="submitDateBegin != null and submitDateBegin != ''">
+				and t1.SUBMIT_DATE &gt;= #{submitDateBegin}
+			</if>
+			<if test="submitDateEnd != null and submitDateEnd != ''">
+				and t1.SUBMIT_DATE &lt;= #{submitDateEnd}
+			</if>
+			<if test="operFlag != null and operFlag != ''">
+				and t1.OPER_FLAG =#{operFlag}
+			</if>
+			<if test="userId != null and userId != ''">
+				and t1.USER_ID =#{userId}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 UUMS_USER_APP_WORKFLOW -->
+<select id="findUumsUserAppWorkflowById" parameterType="java.util.Map" resultMap="UumsUserAppWorkflowDTOMap">
+	select
+		t1.id                             ,
+		t1.app_id                         ,
+		t1.work_flow_no                   ,
+		t1.submitter                      ,
+		t1.submit_date                    ,
+		t1.oper_flag                      ,
+		t1.user_id                        
+	from uums_user_app_workflow 	t1
+		where t1.id = #{id}
+</select>
+<!-- 新增对象 UUMS_USER_APP_WORKFLOW -->
+<insert id="insertUumsUserAppWorkflow" parameterType="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsUserAppWorkflowDTO">
+	insert into uums_user_app_workflow
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="workFlowNo != null">
+				work_flow_no,
+			</if>
+			<if test="submitter != null">
+				submitter,
+			</if>
+			<if test="submitDate != null">
+				submit_date,
+			</if>
+			<if test="operFlag != null">
+				oper_flag,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="workFlowNo != null">
+				#{workFlowNo,jdbcType=VARCHAR},
+			</if>
+			<if test="submitter != null">
+				#{submitter,jdbcType=VARCHAR},
+			</if>
+			<if test="submitDate != null">
+				#{submitDate,jdbcType=DATE},
+			</if>
+			<if test="operFlag != null">
+				#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 更新对象 UUMS_USER_APP_WORKFLOW -->
+<update id="updateUumsUserAppWorkflowSensitive" parameterType="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsUserAppWorkflowDTO">
+	update uums_user_app_workflow t1
+	<set>
+			<if test="id != null">
+				t1.id                             =#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="workFlowNo != null">
+				t1.work_flow_no                   =#{workFlowNo,jdbcType=VARCHAR},
+			</if>
+			<if test="submitter != null">
+				t1.submitter                      =#{submitter,jdbcType=VARCHAR},
+			</if>
+			<if test="submitDate != null">
+				t1.submit_date                    =#{submitDate,jdbcType=DATE},
+			</if>
+			<if test="operFlag != null">
+				t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				t1.user_id                        =#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				t1.creation_date                  =#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				t1.last_update_date               =#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				t1.version                        =t1.version+1,
+			</if>
+	</set>
+		where t1.id = #{id}
+</update>
+<!-- 更新对象 UUMS_USER_APP_WORKFLOW -->
+<update id="updateUumsUserAppWorkflowAll" parameterType="avicit.uums.permission.workflow.uumsuserappworkflow.dto.UumsUserAppWorkflowDTO">
+	update uums_user_app_workflow t1
+		set
+			t1.id                             =#{id,jdbcType=VARCHAR},
+			t1.app_id                         =#{appId,jdbcType=VARCHAR},
+			t1.work_flow_no                   =#{workFlowNo,jdbcType=VARCHAR},
+			t1.submitter                      =#{submitter,jdbcType=VARCHAR},
+			t1.submit_date                    =#{submitDate,jdbcType=DATE},
+			t1.oper_flag                      =#{operFlag,jdbcType=VARCHAR},
+			t1.user_id                        =#{userId,jdbcType=VARCHAR},
+			t1.created_by                     =#{createdBy,jdbcType=VARCHAR},
+			t1.creation_date                  =#{creationDate},
+			t1.last_updated_by                =#{lastUpdatedBy,jdbcType=VARCHAR},
+			t1.last_update_date               =#{lastUpdateDate},
+			t1.last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			t1.version                        =t1.version+1,
+	where t1.id = #{id}
+</update>
+<!-- 主键删除 UUMS_USER_APP_WORKFLOW -->
+<delete id="deleteUumsUserAppWorkflowById" parameterType="java.lang.String">
+		delete from uums_user_app_workflow t1 where t1.id = #{id}
+</delete>
+
+<select id="generatorWorkFlowNo" resultType="java.lang.Integer">
+	select count(*) from uums_user_app_workflow t1 where 
+	t1.submit_date &gt;= #{startDate, jdbcType=DATE}  and t1.submit_date &lt;= #{endDate, jdbcType=DATE}
+</select>
+</mapper>

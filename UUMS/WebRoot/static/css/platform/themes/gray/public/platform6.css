@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+.required-icon {
+	maring:0px;
+	padding:0px;
+	width: 10px;
+	height: 23px;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align:-4px;
+	background: url('images/required.gif') no-repeat center center;
+}
+.inputbox{
+	background-color: #fff;
+	border: 1px solid #95b8e7;
+	color: #000;
+	height: 18px;
+}
+fieldset{
+		border:1px #cccccc solid;
+		padding:10px;
+		margin:10px;
+}
+.selectbox {
+	display: inline-block;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	border-width: 1px;
+	border-style: solid;
+	overflow: hidden;
+}
+
+.selectbox .selectbox-text {
+	font-size: 12px;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	line-height: 20px;
+	height: 20px;
+	*margin-top: -1px;
+	*height: 18px;
+	*line-height: 18px;
+	_height: 18px;
+	_line-height: 18px;
+	vertical-align: baseline;
+}
+
+.selectbox-button {
+	width: 18px;
+	height: 20px;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	cursor: pointer;
+	/* opacity: 0.6;
+	filter: alpha(opacity=60); */
+}
+
+.selectbox-button-hover {
+	/* opacity: 1.0;
+	filter: alpha(opacity=100); */
+	
+}
+
+.selectbox {
+	border-color: #95B8E7;
+	background-color: #fff;
+}
+
+.selectbox-button {
+	background:
+		url('images/selectorCommon.gif')
+		no-repeat center center;
+}
+.red-start{
+	color:red;
+}

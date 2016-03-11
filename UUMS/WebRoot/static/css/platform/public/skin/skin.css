@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+/*平台登录首页，皮肤切换样式  */
+
+/*灰色皮肤显示  */
+.skin-gray {
+	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	width: 9px;
+	height: 9px;
+	margin-left: 3px;
+	margin-right: 3px;
+	background-color: #798da5;
+	border: 1px solid white;
+}
+/*蓝色皮肤显示  */
+.skin-blue {
+	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	width: 9px;
+	height: 9px;
+	margin-left: 3px;
+	margin-right: 3px;
+	background-color: #287ce7;
+	border: 1px solid white;
+}
+/*默认皮肤显示  */
+.skin-default {
+	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	width: 9px;
+	height: 9px;
+	margin-left: 3px;
+	margin-right: 3px;
+	background-color: #c9c9c9;
+	border: 1px solid white;
+}
+
+/*蓝色皮肤显示  */
+.skin-blue_oa {
+	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	width: 9px;
+	height: 9px;
+	margin-left: 3px;
+	margin-right: 3px;
+	background-color: #3C93DD;
+	border: 1px solid white;
+}
